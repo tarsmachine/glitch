@@ -1,0 +1,128 @@
+@import "../mixins/text_glitch.scss";
+@import "./modal.scss";
+
+.navbar{
+  font-family: $sans-serif;
+}
+.navbar {
+  display: flex;
+  background-color: $purple;
+  color: $white;
+  align-items: center;
+  font-size: 14px;
+  height: 50px;
+}
+.navbar a, .navbar a:visited{
+  display: flex;
+  height: 50px;
+  text-decoration: none;
+  align-items: center;
+  color: $light-grey;
+}
+.navbar a:hover, .navbar button:hover{
+  color: $white;
+}
+.navbar a.logo{
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+  padding: 0px;
+  position: relative;
+}
+.navbar a.logo i:nth-child(n+2){
+  display:none
+}
+.navbar a.logo:hover i:nth-child(n+2){
+  display:inline;
+}
+.navbar a.logo:hover{
+  @include iGlitch("base", 17, 25, 25, 10, 12.5);
+}
+.logo .baselogo{
+  display: inline-block;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 10px;
+  left: 12.5px;
+  color: $white;
+}
+
+.navbar .searchbar{
+  flex-grow: 1;
+  font-size: 12px;
+}
+.navbar > *{
+  padding: 10px;
+  padding-top: 11px;
+  box-sizing: border-box;
+  border-bottom: 2px solid transparent;
+}
+
+.navbar .logo div{
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+.navbar a, .navbar button{
+  text-align: center;
+}
+.navbar button{
+  font-size: 12px;
+  padding: 7px 8px;
+  margin-right: 10px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  vertical-align: baseline;
+  cursor: pointer;
+}
+.navbar .login-btn, .navbar .logout-btn{
+  border: 1px solid $white;
+}
+.navbar button.profile-btn{
+  font-size: 16px;
+  margin-left: 0px;
+  margin-right: 10px;
+  padding: 7px 11px;
+}
+.navbar button:hover{
+  background-color: $light-purple;
+}
+
+.navbar a.active{
+  color: $white;
+  border-bottom: 2px solid $white;
+}
+.searchbar{
+  display: flex;
+}
+.searchbar i{
+  display: inline-block;
+  background-color: $dark-purple;
+  border-top: 1px solid $purple-glow;
+  border-left: 1px solid $purple-glow;
+  border-bottom: 1px solid $purple-glow;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  padding: 6px 8px;
+  font-size: 16px;
+  color: $dark-grey;
+
+}
+.searchbar .search-input{
+  color: $white;
+  background-color: $dark-purple;
+  border-top: 1px solid $purple-glow;
+  border-right: 1px solid $purple-glow;
+  border-bottom: 1px solid $purple-glow;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  width: 350px;
+}
+.searchbar .search-input:hover{
+  cursor: not-allowed; //TODO - Remove when search is implemented
+}
+.searchbar .search-input::placeholder{
+  color: $white;
+}

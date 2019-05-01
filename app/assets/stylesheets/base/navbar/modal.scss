@@ -1,0 +1,142 @@
+.auth-modal{
+  font-family: $sans-serif;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: $white;
+  padding: 10px;
+  border-radius: 3px;
+  h1{
+    padding:20px 10px;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .modal-icon{
+      font-size: 25px;
+      width:25px;
+      height: 25px;
+      margin-right: 10px;
+      color: $purple;
+    }
+  }
+  nav{
+    font-size: 14px;
+    display: flex;
+    padding: 0px 10px;
+    border-bottom: 1px solid $light-grey;
+    margin-bottom: 10px;
+
+    button{
+      position: relative;
+      top: 1px;
+      color: black;
+      padding: 10px;
+      border-bottom: 2px solid transparent;
+    }
+    button:hover{
+      color: $purple;
+      cursor: pointer;
+    }
+    .active{
+      color: $purple;
+      border-bottom: 2px solid $purple;
+    }
+  }
+  form{
+    padding: 10px;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    label{
+      font-weight: 600;
+    }
+    input{
+      border: 1px solid $light-grey;
+      border-radius:3px;
+      padding: 10px;
+      margin-top:10px;
+      margin-bottom: 20px;
+      width: 350px;
+    }
+    input:active, input:focus{
+      border: 1px solid $purple;
+      box-shadow: $purple-glow 0 0 10px -1px;
+      transition: box-shadow 1s;
+    }
+    button{
+      display: inline-block;
+      border:1px solid $light-purple;
+      background-color: $purple;
+      border-radius: 3px;
+      flex-grow: 0;
+      padding: 10px;
+      color: $white;
+      text-align: center;
+      margin-top: 10px;
+    }
+    button:hover{
+      background-color: $light-purple;
+    }
+    button:active{
+      background-color: $light-purple;
+      box-shadow: $purple-glow 0 0 15px -2px;
+    }
+    button:disabled{
+      background-color: rgba(0,0,0,.05);
+      cursor: not-allowed;
+      border: rgba(0,0,0,.05);
+      outline: rgba(0,0,0,.05);
+      color: $dark-grey;
+      outline-color: $dark-grey;
+    }
+    span{
+      position: relative;
+    }
+    span i{
+      padding: 5px;
+      position: absolute;
+      right: 5px;
+      top: 15px;
+      font-size: 14px;
+      color: $dark-grey;
+    }
+    span i:hover{
+      cursor: pointer;
+      background-color: rgba(255,255,255,.05);
+    }
+    span i:active, span i:focus{
+      background-color: rgba(255,255,255,.05);
+      box-shadow: $white 0 0 6px 0px;
+    }
+  }
+  button.close{
+    padding: 3px 8px;
+    color: $white;
+    font-size: 22px;
+    font-weight: 700;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border-radius: 3px;
+    transform: translateX(calc(100% + 5px));
+  }
+  button.close:hover{
+    background-color: rgba(255,255,255,.05);
+  }
+  button.close:active{
+    background-color: rgba(255,255,255,.05);
+    box-shadow: $white 0 0 6px 0px;
+  }
+
+}
+.auth-overlay{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(0,0,0,.6);
+}

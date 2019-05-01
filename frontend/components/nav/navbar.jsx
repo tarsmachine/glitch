@@ -1,0 +1,44 @@
+import React from 'react';
+import Modal from "./modal";
+import ProfileButton from "./profile_button";
+import {Link, NavLink} from "react-router-dom";
+import SearchBar from "./search_bar";
+import Logo from "./logo";
+
+class Navbar extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = { modal: false };
+    this.showModal = this.showModal.bind(this);
+  }
+  showModal(type){
+    return ()=>{
+      this.setState({modal: type});
+    };
+  }
+  
+  render(){
+    return (
+      <nav className="navbar">
+        <Logo />
+        <NavLink exact to="/" >Discover</NavLink>
+        {this.props.loggedIn ? <NavLink to="/following" >Following</NavLink> : ""}
+        <NavLink to="/directory" >Browse</NavLink>
+        <SearchBar />
+        {this.props.loggedIn ? <button className="logout-btn" onClick={this.props.logout}>Log Out</button> : <button className="login-btn" onClick={this.showModal("login")}>Log In</button>}
+        {this.props.loggedIn ? "" : <button className="signup-btn" onClick={this.showModal("signup")}>Sign Up</button>}
+        <ProfileButton 
+          loggedIn={this.props.loggedIn} 
+          currentUser={this.props.currentUser} 
+          showModal={this.showModal} 
+        />
+        {this.props.loggedIn ? "" : 
+        <Modal showModal={this.showModal} type={this.state.modal} 
+        login={this.props.login} signup={this.props.signup} errors={this.props.errors}
+        />}
+      </nav>
+    );
+  }
+}
+
+export default Navbar;

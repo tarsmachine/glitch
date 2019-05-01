@@ -1,0 +1,62 @@
+$serif: georgia,"times new roman",times,serif;
+$sans-serif: 'Helvetica Neue', arial, helvetica, sans-serif;
+
+    @font-face {
+  font-family: "Flaticon";
+  src: font-url("Flaticon.eot");
+  src: font-url("Flaticon.eot?#iefix") format("embedded-opentype"),
+       font-url("Flaticon.woff2") format("woff2"),
+       font-url("Flaticon.woff") format("woff"),
+       font-url("Flaticon.ttf") format("truetype"),
+       font-url("Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: font-url("Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-television:before { content: "\f100"; }
+.flaticon-television-1:before { content: "\f101"; }
+.flaticon-tv:before { content: "\f102"; }
+.flaticon-channel:before { content: "\f103"; }
+.flaticon-gamepad:before { content: "\f104"; }
+.flaticon-gamepad-1:before { content: "\f105"; }
+.flaticon-game:before { content: "\f106"; }
+.flaticon-pacman:before { content: "\f107"; }
+.flaticon-character:before { content: "\f108"; }
+.flaticon-tender-ghost:before { content: "\f109"; }
+.flaticon-halloween-ghost:before { content: "\f10a"; }
+.flaticon-cute-monster:before { content: "\f10b"; }
+    
+    $font-Flaticon-television: "\f100";
+    $font-Flaticon-television-1: "\f101";
+    $font-Flaticon-tv: "\f102";
+    $font-Flaticon-channel: "\f103";
+    $font-Flaticon-gamepad: "\f104";
+    $font-Flaticon-gamepad-1: "\f105";
+    $font-Flaticon-game: "\f106";
+    $font-Flaticon-pacman: "\f107";
+    $font-Flaticon-character: "\f108";
+    $font-Flaticon-tender-ghost: "\f109";
+    $font-Flaticon-halloween-ghost: "\f10a";
+    $font-Flaticon-cute-monster: "\f10b";
