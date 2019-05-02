@@ -29,3 +29,7 @@ const loginError = (errors)=>({
   type: LOGIN_ERROR,
   errors
 });
+export const clearSessionErrors = ()=>({
+  type: LOGIN_ERROR,
+  errors: []
+});

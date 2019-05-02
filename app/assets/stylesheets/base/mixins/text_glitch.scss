@@ -1,5 +1,5 @@
 //https://css-tricks.com/glitch-effect-text-images-svg/
-//from Chris Coyier
+//original code from Chris Coyier, modified to work with i tags
 
 @mixin textGlitch($name, $intensity, $color, $background, $highlightColor1, $highlightColor2, $width, $height) {
   
@@ -142,7 +142,7 @@
     animation: #{$name}-anim-2 3s infinite linear alternate-reverse;
   }
 }
-
+//Custom modification
 @mixin iGlitch($name, $intensity, $width, $height, $top, $left) {
   
   $steps: $intensity;

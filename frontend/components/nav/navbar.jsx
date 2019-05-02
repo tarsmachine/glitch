@@ -8,11 +8,15 @@ import Logo from "./logo";
 class Navbar extends React.Component{
   constructor(props){
     super(props);
-    this.state = { modal: false };
+    let modal = false;
+    if (this.props.location.pathname.toLowerCase() === "/login" ) modal="login";
+    if (this.props.location.pathname.toLowerCase() === "/signup") modal="signup";
+    this.state = { modal };
     this.showModal = this.showModal.bind(this);
   }
   showModal(type){
     return ()=>{
+      this.props.clearErrors();
       this.setState({modal: type});
     };
   }
@@ -31,6 +35,7 @@ class Navbar extends React.Component{
           loggedIn={this.props.loggedIn} 
           currentUser={this.props.currentUser} 
           showModal={this.showModal} 
+          logout={this.props.logout}
         />
         {this.props.loggedIn ? "" : 
         <Modal showModal={this.showModal} type={this.state.modal} 

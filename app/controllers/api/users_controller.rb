@@ -39,6 +39,8 @@ class Api::UsersController < ApplicationController
     params.require(:user).permit(:username, :password, :email)
   end
   def update_user_params
+    #Don't allow demo user to change credentials!!!
+    return params.requre(:user).permit(:description) if(params[:user] && params[:user][:username] == "demo_user")
     params.requre(:user).permit(:password, :email, :description)
   end
 end

@@ -28,7 +28,7 @@
     padding: 0px 10px;
     border-bottom: 1px solid $light-grey;
     margin-bottom: 10px;
-
+   
     button{
       position: relative;
       top: 1px;
@@ -44,6 +44,32 @@
       color: $purple;
       border-bottom: 2px solid $purple;
     }
+  }
+  .errors{
+    padding: 5px;
+    border: 1px solid red;
+    border-left-width: 3px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+  .errors ul{
+    list-style: none;
+  }
+  .errors ul li{
+    margin-bottom:5px;
+    font-size: 14px;
+  }
+  .errors ul li:last-child{
+    margin-bottom: 0px;
+  }
+  .errors i{
+    color: red;
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    margin-right: 15px;
+    margin-left: 5px;
   }
   form{
     padding: 10px;

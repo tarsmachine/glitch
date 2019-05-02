@@ -65,9 +65,15 @@ class Modal extends React.Component{
           <button onClick={this.props.showModal("login")} className={ login ? "active": ""}>Log In</button>
           <button onClick={this.props.showModal("signup")} className={ signup ? "active" : ""}>Sign Up</button>
         </nav>
-        <ul>
-          {this.props.errors.map((err, idx)=><li key={idx}>{err}</li>)}
-        </ul>
+        { (this.props.errors.length > 0 ) ?
+          <div className="errors">
+            <i class="fas fa-minus-circle"></i>
+            <ul>
+              {this.props.errors.map((err, idx)=><li key={idx}>{err}</li>)}
+            </ul>
+          </div>
+          : ""
+        }
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="username">Username</label>
           <input type="text" id="username" value={this.state.username} onChange={this.handleInput("username")}/>

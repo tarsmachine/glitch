@@ -1,0 +1,60 @@
+ul.profile-dropdown{
+  position: absolute;
+  right: 5px;
+  top: 50px;
+  background-color: $white;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $light-grey;
+  li{
+    font-size: 12px;
+    padding:5px 10px;
+    color: black;
+    width: 150px;
+    display:flex;
+    justify-content: flex-start;
+    align-content: center;
+    border-radius: 3px;
+    i{
+      margin-right: 7px;
+      font-size: 16px;
+    }
+    div{
+      display: flex;
+      align-items: center;
+    }
+  }
+  li:hover{
+    background-color: $purple;
+    color: $white;
+  }
+  li.no-hover:hover{
+    background-color: $white;
+    color: black;
+  }
+  li.new-section{
+    padding:0px;
+    height:0px;
+    border-bottom:1px solid $light-grey;
+    margin-top:10px;
+    margin-bottom: 10px;
+  }
+  li.bold{
+    font-weight: 600;
+  }
+}
+ul.profile-dropdown:after{
+  display:block;
+  content:"";
+  width:0;
+  height:0;
+  border-bottom: 5px solid white;
+  border-left:5px solid transparent;
+  border-right: 5px solid transparent;
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  z-index: 2;
+}
