@@ -28,3 +28,6 @@
 
 /app/assets/javascripts/glitch.js
 /app/assets/javascripts/glitch.js.map
+
+.DS_Store
+npm-debug.log
