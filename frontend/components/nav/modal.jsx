@@ -67,7 +67,7 @@ class Modal extends React.Component{
         </nav>
         { (this.props.errors.length > 0 ) ?
           <div className="errors">
-            <i class="fas fa-minus-circle"></i>
+            <i className="fas fa-minus-circle"></i>
             <ul>
               {this.props.errors.map((err, idx)=><li key={idx}>{err}</li>)}
             </ul>

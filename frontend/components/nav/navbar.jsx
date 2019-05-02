@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from "./modal";
 import ProfileButton from "./profile_button";
-import {Link, NavLink} from "react-router-dom";
+import {Redirect, Link, NavLink} from "react-router-dom";
 import SearchBar from "./search_bar";
 import Logo from "./logo";
 
@@ -9,6 +9,7 @@ class Navbar extends React.Component{
   constructor(props){
     super(props);
     let modal = false;
+    console.log(this.props.location.hash.toLowerCase());
     if (this.props.location.pathname.toLowerCase() === "/login" ) modal="login";
     if (this.props.location.pathname.toLowerCase() === "/signup") modal="signup";
     this.state = { modal };
@@ -20,10 +21,15 @@ class Navbar extends React.Component{
       this.setState({modal: type});
     };
   }
-  
+  redirect(){
+    if(this.props.location.hash.toLowerCase() === "#/signup") this.showModal("signup")();
+    if(this.props.location.hash.toLowerCase() === "#/login") this.showModal("login")();
+    return this.props.location.hash ? <Redirect to={this.props.location.hash.slice(1)} /> : "";
+  }
   render(){
     return (
       <nav className="navbar">
+        {this.redirect()}
         <Logo />
         <NavLink exact to="/" >Discover</NavLink>
         {this.props.loggedIn ? <NavLink to="/following" >Following</NavLink> : ""}
