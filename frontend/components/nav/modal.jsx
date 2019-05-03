@@ -67,19 +67,20 @@ class Modal extends React.Component{
         <h1>
           <LogoIcon className="modal-icon"/>
         { login ? "Log in to Glitch" : "Join Glitch today"}</h1>
-        <nav className="modal-nav">
-          <button onClick={this.props.showModal("login")} className={ login ? "active": ""}>Log In</button>
-          <button onClick={this.props.showModal("signup")} className={ signup ? "active" : ""}>Sign Up</button>
-        </nav>
-        { (login && Object.values(this.props.errors).length > 0 ) ?
+        {(login && Object.values(this.props.errors).length > 0) ?
           <div className="errors">
             <i className="fas fa-minus-circle"></i>
             <ul>
-              {Object.values(this.props.errors).map((err, idx)=><li key={idx}>{err}</li>)}
+              {Object.values(this.props.errors).map((err, idx) => <li key={idx}>{err}</li>)}
             </ul>
           </div>
           : ""
         }
+        <nav className="modal-nav">
+          <button onClick={this.props.showModal("login")} className={ login ? "active": ""}>Log In</button>
+          <button onClick={this.props.showModal("signup")} className={ signup ? "active" : ""}>Sign Up</button>
+        </nav>
+        
         <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="username">Username 
