@@ -6,10 +6,10 @@ class Api::UsersController < ApplicationController
         login @user
         render :show
       else
-        render json: @user.errors.full_messages, status: 422
+        render json: @user.errors, status: 422
       end
     else
-      render json: ["Invalid request"], status: 422
+      render json: {user: 'Invalid request'}, status: 422
     end
   end
   def update
@@ -18,7 +18,7 @@ class Api::UsersController < ApplicationController
     #Handle thumbnail/active storage?
       render :show
     else
-      render json: @user.errors.full_messages, status: 422
+      render json: @user.errors, status: 422
     end
   end
   def show
@@ -26,7 +26,7 @@ class Api::UsersController < ApplicationController
     if @user
       render :show
     else
-      render json: ["User not found"], status: 422
+      render json: {user: 'User not found'}, status: 422
     end
   end
   def index

@@ -28,14 +28,20 @@ class Modal extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     if(this.props.type.toLowerCase() === "login"){
-      this.props.login(this.state.user).then(()=>this.handleCloseModal());
+      this.props.login(this.state.user).then(()=>{
+        this.handleCloseModal(); 
+        this.props.history.push("/");
+      });
     }else{
-      this.props.signup(this.state.user).then(()=>this.handleCloseModal());
+      this.props.signup(this.state.user).then(()=>{
+        this.handleCloseModal(); 
+        this.props.history.push("/");
+      });
     }
   }
   demoLogin(e){
     e.preventDefault();
-    this.props.login({username: "demo_user", password: "demo1234"}).then(()=>this.handleCloseModal());
+    this.props.login({username: "demo_user", password: "demo1234"}).then(()=>{this.handleCloseModal(); this.props.history.push("/");});
   }
   togglePasswordVisibility(){
     return (e)=>{
@@ -65,28 +71,53 @@ class Modal extends React.Component{
           <button onClick={this.props.showModal("login")} className={ login ? "active": ""}>Log In</button>
           <button onClick={this.props.showModal("signup")} className={ signup ? "active" : ""}>Sign Up</button>
         </nav>
-        { (this.props.errors.length > 0 ) ?
+        { (login && Object.values(this.props.errors).length > 0 ) ?
           <div className="errors">
             <i className="fas fa-minus-circle"></i>
             <ul>
-              {this.props.errors.map((err, idx)=><li key={idx}>{err}</li>)}
+              {Object.values(this.props.errors).map((err, idx)=><li key={idx}>{err}</li>)}
             </ul>
           </div>
           : ""
         }
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username</label>
-          <input type="text" id="username" value={this.state.username} onChange={this.handleInput("username")}/>
+          <div>
+            <label htmlFor="username">Username 
+              {this.props.errors.username ? <i className="mini-error-icon fas fa-minus-circle" /> : ""}
+            </label>
+            <input type="text" id="username" value={this.state.user.username} onChange={this.handleInput("username")}
+              className={this.props.errors.username ? "input-error" : ""}
+              />
+            {signup ? <div className="subtext">
+              {this.props.errors.username? `*Username ${this.props.errors.username}` : "This is the name people will know you by on Glitch."}
+            </div> : ""}
+          </div>
           { signup ? 
-          (<>
-            <label htmlFor="email">Email</label>
-              <input type="text" id="email" value={this.state.email} onChange={this.handleInput("email")}/>
-          </>) : ""}
-          <label htmlFor="password">Password</label>
-          <span>
-            <input type={this.state.showPassword ? "text" : "password"} id="password" value={this.state.password} onChange={this.handleInput("password")}/>
-            <i onClick={this.togglePasswordVisibility()} className="fas fa-eye" />
-          </span>
+          (<div>
+            <label htmlFor="email">Email
+              {this.props.errors.email  ? <i className="mini-error-icon fas fa-minus-circle" /> : ""}
+            </label>
+              <input type="text" id="email" value={this.state.user.email} onChange={this.handleInput("email")}
+                className={this.props.errors.email ? "input-error" : ""}
+              />
+              { signup ? <div className="subtext">
+                {this.props.errors.email ? `*Email ${this.props.errors.email}` : "This is your email address."}
+              </div> : ""}
+          </div>) : ""}
+          <div>
+            <label htmlFor="password">Password
+              {this.props.errors.password ? <i className="mini-error-icon fas fa-minus-circle" /> : ""}
+            </label>
+            <span>
+              <input type={this.state.showPassword ? "text" : "password"} id="password" value={this.state.user.password} onChange={this.handleInput("password")}
+                className={this.props.errors.password ? "input-error" : ""}
+              />
+              <i onClick={this.togglePasswordVisibility()} className="fas fa-eye" />
+              { signup ? <div className="subtext">
+                {this.props.errors.password ? `*Password ${this.props.errors.password}` : "Please make your password at least 8 characters."}
+              </div> : "" }
+            </span>
+          </div>
           <button disabled={loginDisabled}>{login ? "Log In" : "Sign Up"}</button>
           {login ? <button onClick={this.demoLogin}>Demo Login</button> : "" }
         </form>

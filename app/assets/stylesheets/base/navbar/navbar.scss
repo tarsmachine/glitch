@@ -99,6 +99,7 @@
   display: flex;
 }
 .searchbar i{
+  cursor: not-allowed;
   display: inline-block;
   background-color: $dark-purple;
   border-top: 1px solid $purple-glow;

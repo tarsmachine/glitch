@@ -38,7 +38,7 @@ class Navbar extends React.Component{
           logout={this.props.logout}
         />
         {this.props.loggedIn ? "" : 
-        <Modal showModal={this.showModal} type={this.state.modal} 
+        <Modal showModal={this.showModal} type={this.state.modal} history={this.props.history}
         login={this.props.login} signup={this.props.signup} errors={this.props.errors}
         />}
       </nav>

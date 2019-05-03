@@ -6,6 +6,7 @@
   transform: translateX(-50%) translateY(-50%);
   background-color: $white;
   padding: 10px;
+  padding-bottom: 20px;
   border-radius: 3px;
   h1{
     padding:20px 10px;
@@ -27,7 +28,6 @@
     display: flex;
     padding: 0px 10px;
     border-bottom: 1px solid $light-grey;
-    margin-bottom: 10px;
    
     button{
       position: relative;
@@ -77,20 +77,50 @@
     display: flex;
     flex-direction: column;
     label{
+      margin-top: 20px;
       font-weight: 600;
+      display: flex;
+      justify-content: space-between;
     }
     input{
       border: 1px solid $light-grey;
       border-radius:3px;
       padding: 10px;
       margin-top:10px;
-      margin-bottom: 20px;
       width: 350px;
     }
     input:active, input:focus{
       border: 1px solid $purple;
       box-shadow: $purple-glow 0 0 10px -1px;
       transition: box-shadow 1s;
+    }
+    input.input-error, input.input-error:focus, input.input-error:active{
+      border-color: red;
+      box-shadow: none;
+      transition: 0;
+    }
+    .mini-error-icon{
+      color: red;
+      margin-right: 3px;
+      font-size: 14px;
+    }
+    
+    input ~ .subtext{
+      max-height: 0px;
+      color: $dark-grey;
+      font-size: 11px;
+      margin-top: 5px;
+      transition: max-height .5s ease-in-out;
+      overflow: hidden;
+    }
+    input:focus ~ .subtext, input:active ~ .subtext{
+      max-height: 1rem;
+      transition: max-height .5s ease-in-out;
+    }
+    .input-error ~ .subtext{
+      max-height: 100%;
+      color: red;
+      transition: max-height 0s;
     }
     button{
       display: inline-block;
@@ -113,10 +143,9 @@
     button:disabled{
       background-color: rgba(0,0,0,.05);
       cursor: not-allowed;
-      border: rgba(0,0,0,.05);
-      outline: rgba(0,0,0,.05);
+      border: 1px solid rgba(0,0,0,.05);
+      outline: 1px solid rgba(0,0,0,.05);
       color: $dark-grey;
-      outline-color: $dark-grey;
     }
     span{
       position: relative;
@@ -125,7 +154,7 @@
       padding: 5px;
       position: absolute;
       right: 5px;
-      top: 15px;
+      top: -5px;
       font-size: 14px;
       color: $dark-grey;
     }
