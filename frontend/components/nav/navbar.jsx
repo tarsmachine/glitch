@@ -9,9 +9,9 @@ class Navbar extends React.Component{
   constructor(props){
     super(props);
     let modal = false;
-    console.log(this.props.location.hash.toLowerCase());
     if (this.props.location.pathname.toLowerCase() === "/login" ) modal="login";
     if (this.props.location.pathname.toLowerCase() === "/signup") modal="signup";
+    if (this.props.loggedIn) modal=false;
     this.state = { modal };
     this.showModal = this.showModal.bind(this);
   }
@@ -21,15 +21,9 @@ class Navbar extends React.Component{
       this.setState({modal: type});
     };
   }
-  redirect(){
-    if(this.props.location.hash.toLowerCase() === "#/signup") this.showModal("signup")();
-    if(this.props.location.hash.toLowerCase() === "#/login") this.showModal("login")();
-    return this.props.location.hash ? <Redirect to={this.props.location.hash.slice(1)} /> : "";
-  }
   render(){
     return (
       <nav className="navbar">
-        {this.redirect()}
         <Logo />
         <NavLink exact to="/" >Discover</NavLink>
         {this.props.loggedIn ? <NavLink to="/following" >Following</NavLink> : ""}

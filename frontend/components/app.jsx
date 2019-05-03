@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBarContainer from './nav/navbar_container';
 import {Route, Switch, Redirect} from "react-router-dom";
+
 export default () => (
   <>
     <NavBarContainer />
