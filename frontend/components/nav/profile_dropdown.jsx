@@ -5,20 +5,25 @@ class ProfileDropdown extends React.Component{
   constructor(props){
     super(props);
     this.node = React.createRef();
-    const hideDropdown = (e)=>{
-      if(this.node.current && !this.node.current.contains(e.target)){
-        document.removeEventListener("click", hideDropdown);
-        this.props.hideDropdown();
-      }
-    };
-    document.addEventListener("click",hideDropdown);
     this.userDropdown = this.userDropdown.bind(this);
     this.loginDropdown = this.loginDropdown.bind(this);
+    this.hideDropdown = this.hideDropdown.bind(this);
+  }
+  hideDropdown(e){
+    if (!this.node.current.contains(e.target)) {
+      this.props.hideDropdown(); //callback to parent to hide this component
+    }
+  }
+  componentDidMount(){
+    document.addEventListener("click", this.hideDropdown);
+  }
+  componentWillUnmount(){
+    document.removeEventListener("click", this.hideDropdown);
   }
   redirect(url){
     return (e)=>{
       e.preventDefault();
-      this.props.hideDropdown();
+      this.props.hideDropdown(); //hide the dropdown before changing the page
       this.props.history.push(url);
     };
   }
