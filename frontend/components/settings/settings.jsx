@@ -4,8 +4,6 @@ import merge from "lodash/merge";
 class Settings extends React.Component{
   constructor(props){
     super(props);
-    console.log(this.props);
-    console.log("hi");
     const user = merge({}, this.props.currentUser);
     user.description = user.description || "";
     this.state = user;

@@ -7,7 +7,7 @@ import Index from "./index/index";
 export default () => (
   <>
     <NavBarContainer />
-    <div class="body">
+    <div className="body">
       <Switch>
         <Route exact path="/" component={Index} />
         <AuthRoute exact path="/login" component={Index} />
