@@ -17,6 +17,7 @@ ul.profile-dropdown{
     justify-content: flex-start;
     align-content: center;
     border-radius: 3px;
+    cursor: pointer;
     i{
       margin-right: 7px;
       font-size: 16px;
@@ -33,8 +34,10 @@ ul.profile-dropdown{
   li.no-hover:hover{
     background-color: $white;
     color: black;
+    cursor: inherit;
   }
   li.new-section{
+    cursor: inherit;
     padding:0px;
     height:0px;
     border-bottom:1px solid $light-grey;

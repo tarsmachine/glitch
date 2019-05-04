@@ -13,8 +13,11 @@ class Api::UsersController < ApplicationController
     end
   end
   def update
-    @user = current_user
-    if @user.update(update_user_params)
+    p params
+    @user = User.find_by(id: params[:id])
+    if(@user != current_user)
+      render json: {user: "You cannot edit other users!"}, status: 422
+    elsif @user.update(update_user_params)
     #Handle thumbnail/active storage?
       render :show
     else
@@ -40,7 +43,7 @@ class Api::UsersController < ApplicationController
   end
   def update_user_params
     #Don't allow demo user to change credentials!!!
-    return params.requre(:user).permit(:description) if(params[:user] && params[:user][:username] == "demo_user")
-    params.requre(:user).permit(:password, :email, :description)
+    return params.require(:user).permit(:description) if(params[:user] && params[:user][:username] == "demo_user")
+    params.require(:user).permit(:password, :email, :description)
   end
 end

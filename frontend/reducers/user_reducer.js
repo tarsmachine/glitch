@@ -1,4 +1,4 @@
-import {LOGIN} from '../actions/session_actions';
+import {LOGIN, UPDATE_USER} from '../actions/session_actions';
 import merge from 'lodash/merge';
 
 export default (state={}, action)=>{
@@ -6,6 +6,8 @@ export default (state={}, action)=>{
   switch(action.type){
     case LOGIN:
       return merge({}, state, {[action.user.id]: action.user});
+    case UPDATE_USER:
+      return merge({}, state, { [action.user.id]: action.user });
     default:
       return state;
   }
