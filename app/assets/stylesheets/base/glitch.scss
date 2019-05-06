@@ -12,4 +12,10 @@
 .body{
   flex-grow: 1;
   display: flex;
+  section{
+    max-height:100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: auto;
+  }
 }

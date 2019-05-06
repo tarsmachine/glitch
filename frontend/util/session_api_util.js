@@ -20,3 +20,10 @@ export const updateUser = (user) => $.ajax({
   method: "PATCH",
   data: {user}
 });
+export const updateUserAvatar = (id, avatar) => $.ajax({
+  url: `/api/users/${id}`,
+  method: "PATCH",
+  data: avatar,
+  processData: false,
+  contentType: false
+});

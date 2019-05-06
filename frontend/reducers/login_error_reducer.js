@@ -4,7 +4,7 @@ export default (state = {}, action)=>{
   Object.freeze(state);
   switch(action.type){
     case LOGIN_ERROR:
-      return action.errors;
+      return action.errors || {session: "Unknown Error"};
     default:
       return state;
   }

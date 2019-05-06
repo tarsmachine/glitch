@@ -4,6 +4,6 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :index, :update, :show]
     resource :session, only: [:create, :destroy]
   end
-  match "*path", to: 'static_pages#root', via: :all
+  match "*path", to: 'static_pages#root', via: :all, constraints: lambda { |req| req.format == :html }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

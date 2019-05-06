@@ -18,6 +18,13 @@ ul.profile-dropdown{
     align-content: center;
     border-radius: 3px;
     cursor: pointer;
+    img{
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
     i{
       margin-right: 7px;
       font-size: 16px;

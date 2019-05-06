@@ -4,6 +4,7 @@ import configureStore from "./store/store";
 import * as SessionActions from './actions/session_actions';
 import Root from "./components/root";
 import * as SessionAPIUtil from "./util/session_api_util";
+import * as UIActions from "./actions/ui_actions";
 
 document.addEventListener("DOMContentLoaded",()=>{
   let preloadedState;
@@ -22,14 +23,15 @@ document.addEventListener("DOMContentLoaded",()=>{
   }
 
   const store = configureStore(preloadedState);
-  window.getState = store.getState;
-  /*
+  //window.getState = store.getState;
+  
   window.dispatch = store.dispatch;
   window.getState = store.getState;
   window.SessionAPIUtil = SessionAPIUtil;
   window.SessionActions = SessionActions;
+  window.setLoading = (b) => store.dispatch(UIActions.setLoading(b));
   window.log = (...e)=>console.log(...e);
-  window.logErr = (e)=>console.log(`Error: ${e.responseJSON}`);*/
+  window.logErr = (e)=>console.log(`Error: ${e.responseJSON}`);
   
   ReactDOM.render(<Root store={store} />, document.getElementById("root"));
 });

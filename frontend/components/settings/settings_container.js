@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Settings from "./settings";
-import { updateUser, clearSessionErrors } from "../../actions/session_actions";
+import { updateUser, clearSettingsErrors, updateUserAvatar } from "../../actions/session_actions";
+import { setLoading } from "../../actions/ui_actions";
 import { withRouter } from "react-router-dom";
 
 const mSTP = state => {
@@ -14,7 +15,9 @@ const mSTP = state => {
 
 const mDTP = dispatch => ({
   updateUser: (user) => dispatch(updateUser(user)),
-  clearErrors: () => dispatch(clearSessionErrors())
+  clearErrors: () => dispatch(clearSettingsErrors()),
+  setLoading: b=> dispatch(setLoading(b)),
+  updateUserAvatar: (id, avatar)=>dispatch(updateUserAvatar(id, avatar)),
 });
 
 export default withRouter(connect(mSTP, mDTP)(Settings));

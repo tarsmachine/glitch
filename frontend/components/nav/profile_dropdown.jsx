@@ -29,7 +29,10 @@ class ProfileDropdown extends React.Component{
   }
   userDropdown(){
     return (<>
-              <li className="no-hover bold">{this.props.currentUser.username}</li>
+              <li className="no-hover bold">
+                <img src={this.props.currentUser.avatar} onClick={this.redirect("/settings")}/>
+                {this.props.currentUser.username}
+              </li>
               <li className="no-hover new-section"/>
               <li onClick={this.redirect("/settings")}><i className="fas fa-cog" />Settings</li>
               <li onClick={this.props.logout}><i className="fas fa-sign-out-alt" /><div>Log Out</div></li>

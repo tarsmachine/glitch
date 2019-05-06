@@ -1,3 +1,5 @@
+@import "../mixins/text_glitch.scss";
+
 .settings{
   font-family: $sans-serif;
   display: flex;
@@ -6,7 +8,9 @@
   padding: 20px;
   background-color: $offwhite;
   flex-grow: 1;
+  box-sizing: border-box;
   h1{
+    width: 100%;
     margin: 0px;
     padding: 10px 0px;;
     font-size: 24px;
@@ -23,6 +27,82 @@
         margin: 25px 0px;
         padding: 0px;
       }
+      .avatar-form{
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        background-color: $white;
+        border: 1px solid $light-grey;
+        border-radius: 5px;
+        font-size: 14px;
+        width: 1000px;
+        padding: 20px;
+      
+        > span{
+          margin-right: 50px;
+          font-weight: 700;
+        }
+        
+        img{
+          display: inline-block;
+          width: 128px;
+          height: 128px;
+        }
+        .selector{
+          margin-left: 50px;
+          display: flex;
+          flex-direction: column;
+          
+          //custom file input from Osvaldas Valutis
+          //https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
+          input{
+            height: .0001px;
+            width: .0001px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+          }
+          input + label{
+            margin-bottom: 10px;
+            
+            color: $purple;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px;
+            width: 150px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            border:3px solid $purple;
+          }
+          input + label:hover{
+            color: $white;
+            background-color: $light-purple;
+            border: 3px solid $light-purple;
+          }
+          input:active + label{
+            color: $white;
+            background-color: $dark-purple;
+            box-shadow: $purple-glow 0 0 10px -1px;
+            border: 3px solid $dark-purple;
+          }
+          input:focus + label{
+            box-shadow: $purple-glow 0 0 10px -1px;
+          }
+          > span.errors{
+            color: red;
+            margin-bottom: 5px;
+          }
+          
+        }
+        
+      }
+
       .settings-form{
         display: flex;
         flex-direction: column;
