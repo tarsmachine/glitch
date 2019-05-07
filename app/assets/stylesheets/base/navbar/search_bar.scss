@@ -1,0 +1,123 @@
+.searchbar{
+  font-size: 12px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  label{
+    order: 0;
+    display: inline-block;
+    background-color: $dark-purple;
+    border-top: 1px solid $purple-glow;
+    border-left: 1px solid $purple-glow;
+    border-bottom: 1px solid $purple-glow;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 6px 8px;
+    font-size: 16px;
+    color: $dark-grey;
+  }
+  .search-input{
+    color: $white;
+    background-color: $dark-purple;
+    border-top: 1px solid $purple-glow;
+    border-right: 1px solid $purple-glow;
+    border-bottom: 1px solid $purple-glow;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    height: 30px;
+    width: 350px;
+    order: 1;
+  }
+  .search-input::placeholder{
+    color: $white;
+  }
+  .search-input:active, .search-input:focus{
+    background-color: $white;
+    color: $dark-grey;
+  }
+  .search-input:active + label, .search-input:focus + label,
+  .search-input:active ~ i, .search-input:focus ~ i
+  {
+    background-color: $white;
+    color: $dark-grey;
+  }
+  .close-search{
+    order:2;
+    position: relative;
+    right: 20px;
+  }
+}
+.search-dropdown{
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  border: 1px solid $offwhite;
+  background-color: $white;
+  z-index: 2;
+  box-shadow: 0 14px 20px 8px rgba(0,0,0,.1),
+              0 10px 22px -8px rgba(0,0,0,.02),
+              0 8px 38px 0 rgba(0,0,0,.04);
+  display: flex;
+  font-size: 14px;
+  flex-direction: column;
+  max-height: 80vh;
+  color: #000;
+  overflow-y: auto;
+  > .search-title{
+    padding: 10px;
+    color: #000;
+    background-color: $white;
+    border-bottom: 1px solid $offwhite;
+    margin-bottom: 5px;
+    i {
+      margin-right: 10px;
+    }
+  }
+  .list-title{
+    flex-grow: 1;
+    background-color: $grey;
+    color: $purple;
+    text-transform: uppercase;
+    font-size: 11px;
+    padding: 5px;
+  }
+  ul{
+    list-style: none;
+    padding: none;
+    margin: none;
+    li{
+      padding: 10px;
+      color: #000;
+      box-sizing: border-box;
+      display: flex;
+      width: 380px;
+      align-items: center;
+      img{
+        width: 50px;
+        height: 50px;
+        border-radius: 3px;
+        background-color: $purple;
+      }
+      span{
+        margin-left: 10px;
+      }
+    }
+    li:hover{
+      background-color: $purple;
+      color: $white;
+    }
+  }
+  .hidden{
+    display: none;
+  }
+  .no-results:hover{
+    background: $white;
+    color: #000;
+  }
+  .no-results{
+    padding-bottom: 15px;
+    box-sizing: border-box;
+  }
+}

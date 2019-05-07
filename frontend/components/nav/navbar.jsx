@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from "./modal";
 import ProfileButton from "./profile_button";
 import {Redirect, Link, NavLink} from "react-router-dom";
-import SearchBar from "./search_bar";
+import SearchBarContainer from "./search_bar_container";
 import Logo from "./logo";
 
 class Navbar extends React.Component{
@@ -28,7 +28,8 @@ class Navbar extends React.Component{
         <NavLink exact to="/" >Discover</NavLink>
         {this.props.loggedIn ? <NavLink to="/following" >Following</NavLink> : ""}
         <NavLink to="/directory" >Browse</NavLink>
-        <SearchBar />
+        <SearchBarContainer />
+        <span className="spacer"/>
         {this.props.loggedIn ? <button className="logout-btn" onClick={this.props.logout}>Log Out</button> : <button className="login-btn" onClick={this.showModal("login")}>Log In</button>}
         {this.props.loggedIn ? "" : <button className="signup-btn" onClick={this.showModal("signup")}>Sign Up</button>}
         <ProfileButton 

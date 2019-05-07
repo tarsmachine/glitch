@@ -32,11 +32,7 @@ class Api::UsersController < ApplicationController
       render json: {user: 'User not found'}, status: 422
     end
   end
-  def index
-    @users = User.all
-    #filtering logic, User.where(...)
-    render :index
-  end
+  
   private
   def new_user_params
     params.require(:user).permit(:username, :password, :email)

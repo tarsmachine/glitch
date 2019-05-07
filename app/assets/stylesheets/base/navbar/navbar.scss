@@ -1,6 +1,7 @@
 @import "../mixins/text_glitch.scss";
 @import "./modal.scss";
 @import "./profile_dropdown.scss";
+@import "./search_bar.scss";
 
 .navbar{
   font-family: $sans-serif;
@@ -121,41 +122,8 @@
     color: $white;
     border-bottom: 2px solid $white;
   }
-  .searchbar{
-    flex-grow: 1;
-    font-size: 12px;
-     display: flex;
-
-    i{
-      cursor: not-allowed;
-      display: inline-block;
-      background-color: $dark-purple;
-      border-top: 1px solid $purple-glow;
-      border-left: 1px solid $purple-glow;
-      border-bottom: 1px solid $purple-glow;
-      border-top-left-radius: 3px;
-      border-bottom-left-radius: 3px;
-      padding: 6px 8px;
-      font-size: 16px;
-      color: $dark-grey;
-
-    }
-    .search-input{
-      color: $white;
-      background-color: $dark-purple;
-      border-top: 1px solid $purple-glow;
-      border-right: 1px solid $purple-glow;
-      border-bottom: 1px solid $purple-glow;
-      border-top-right-radius: 3px;
-      border-bottom-right-radius: 3px;
-      width: 350px;
-    }
-    .search-input:hover{
-      cursor: not-allowed; //TODO - Remove when search is implemented
-    }
-    .search-input::placeholder{
-      color: $white;
-    }
+  .spacer{
+    flex-grow:1;
   }
 }
 
