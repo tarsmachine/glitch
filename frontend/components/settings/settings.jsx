@@ -19,7 +19,9 @@ class Settings extends React.Component{
   }
   handleSubmit(e) {
     e.preventDefault();
-    this.props.updateUser(this.state).then(()=>this.props.history.push("/"));
+    const user = merge({}, this.state);
+    delete user.avatar;
+    this.props.updateUser(user).then(()=>this.props.history.push("/"));
   }
   avatarSubmit(e){
     e.preventDefault();
