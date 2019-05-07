@@ -4,7 +4,7 @@ export default (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case SEARCH_ERRORS:
-      return action.errors || { search: "Unknown Error" };
+      return action.errors;
     default:
       return state;
   }

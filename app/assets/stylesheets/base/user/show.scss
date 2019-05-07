@@ -1,0 +1,40 @@
+@import "userbar.scss";
+
+.not-found{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  .not-found-icon{
+    font-size: 100px;
+    color: $muted-purple;
+    margin-right: 20px;
+  }
+  div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    color: $muted-purple;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: $sans-serif;
+    width: 280px;
+    a{
+      margin-top: 20px;
+      padding: 5px 10px;
+      font-size: 14px;
+      color: $white;
+      background-color: $purple;
+      border-radius: 3px;
+    }
+    a:hover{
+      border-color: $dark-purple;
+      background-color: $light-purple;
+      box-shadow: $purple-glow 0px 0px 10px -1px;
+    }
+    a:focus, a:active{
+      box-shadow: $purple-glow 0px 0px 10px -1px;
+    }
+  }
+}

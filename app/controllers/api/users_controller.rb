@@ -25,7 +25,7 @@ class Api::UsersController < ApplicationController
     end
   end
   def show
-    @user = User.with_attached_avatar.find_by(params[:id])
+    @user = User.with_attached_avatar.find_by(username: params[:id]) || User.with_attached_avatar.find_by(id: params[:id]) 
     if @user
       render :show
     else

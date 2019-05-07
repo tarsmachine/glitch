@@ -5,7 +5,7 @@ import { setLoading } from "../../actions/ui_actions";
 import { withRouter } from "react-router-dom";
 
 const mSTP = state => {
-  const currentUser = state.entities.users[state.session.currentUserId];
+  const currentUser = state.entities.users[state.session.currentUser];
   const errors = state.errors.login;
   return {
     currentUser,

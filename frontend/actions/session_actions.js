@@ -3,7 +3,6 @@ export const LOGOUT = "LOGOUT";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 export const SETTINGS_ERROR = "LOGIN_ERROR";
 export const UPDATE_USER = "UPDATE_USER";
-export const RECEIVE_USERS = "RECEIVE_USERS";
 
 import * as SessionAPIUtil from '../util/session_api_util';
 
@@ -66,7 +65,3 @@ export const clearSettingsErrors = ()=>({
   errors: {}
 });
 
-export const receiveUsers = (users)=>({
-  type: RECEIVE_USERS,
-  users
-});

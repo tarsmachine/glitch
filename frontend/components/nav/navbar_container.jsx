@@ -4,8 +4,8 @@ import {login, signup, logout, clearSessionErrors} from "../../actions/session_a
 import {withRouter} from "react-router-dom";
 
 const mSTP = state => {
-  const loggedIn = Boolean(state.session.currentUserId);
-  const currentUser = loggedIn ? state.entities.users[state.session.currentUserId] : null;
+  const loggedIn = Boolean(state.session.currentUser);
+  const currentUser = loggedIn ? state.entities.users[state.session.currentUser] : null;
   const errors = state.errors.login;
   return {
     loggedIn,

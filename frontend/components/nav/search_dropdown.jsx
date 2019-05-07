@@ -46,7 +46,7 @@ class SearchDropdown extends React.Component{
         }>
           <span>Channels</span>
         </span>
-        <ul>
+        <ul className={this.props.loading ? "hidden" : ""}>
           {users.map((user)=>(
             <li className="search-user" key={user.id} onClick={this.redirect(`/${user.username}`)}>
               <img src={user.avatar} />
@@ -60,17 +60,27 @@ class SearchDropdown extends React.Component{
   noResults(){
     let noResults=true;
     Object.values(this.props.results.count).forEach(count=>{if(count > 0) noResults=false});
-    return noResults? <ul>
+    return noResults? <ul className={this.props.loading? "hidden" : ""}>
       <li className="no-results">
         No Results
       </li>
     </ul>  : "";
   }
+  loading(){
+    return (
+      <ul className={this.props.loading? "" : "hidden"}>
+        <li className="no-results">
+          Loading...
+        </li>
+      </ul>
+    );
+  }
   render(){
     return (
-      <div className="search-dropdown">
+        <div className="search-dropdown">
         <span className="search-title">{this.title()}</span>
         {this.props.results.users ? this.userIndex() : ""}
+        {this.loading()}
         {this.noResults()}
       </div>
     );

@@ -1,6 +1,7 @@
 @import "navbar/navbar.scss";
 @import "settings/settings.scss";
 @import "loading.scss";
+@import "user/show.scss";
 #root{
   position: fixed;
   top: 0;
@@ -13,10 +14,11 @@
 .body{
   flex-grow: 1;
   display: flex;
-  section{
+  > section, > div {
     max-height:100%;
     max-width: 100%;
     box-sizing: border-box;
+    flex-grow: 1;
     overflow: auto;
   }
 }
