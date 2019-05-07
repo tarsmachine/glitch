@@ -2,7 +2,8 @@ class User < ApplicationRecord
   validates :username, :email, :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: true
   validates :password, length: {minimum: 8, allow_nil: true}
-  
+  validates :username, format: { with: /\A[a-zA-Z0-9\_]+\Z/ }
+  validates_exclusion_of :username, in: %w(settings login signup logout discover following directory videos index subscriptions), message: "is a reserved word"
   has_one_attached :avatar
   validates :avatar, blob: { content_type: :image, size_range: 0..500.kilobytes }
 
