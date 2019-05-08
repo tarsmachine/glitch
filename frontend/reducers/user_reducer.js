@@ -1,5 +1,5 @@
-import {LOGIN, UPDATE_USER} from '../actions/session_actions';
-import {RECEIVE_USER, RECEIVE_USERS} from "../actions/user_actions";
+import {LOGIN} from '../actions/session_actions';
+import {RECEIVE_USER, RECEIVE_USERS, UPDATE_USER} from "../actions/user_actions";
 import merge from 'lodash/merge';
 
 export default (state={}, action)=>{

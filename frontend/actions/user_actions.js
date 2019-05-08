@@ -1,6 +1,9 @@
 export const RECEIVE_USER = "RECEIVE_USER";
 export const USER_ERROR = "USER_ERROR";
+export const SETTINGS_ERROR = "LOGIN_ERROR";
+export const UPDATE_USER = "UPDATE_USER";
 export const RECEIVE_USERS = "RECEIVE_USERS";
+
 import {setLoading} from "./ui_actions";
 
 
@@ -20,6 +23,31 @@ export const fetchUser = (username) => dispatch => {
   });
 };
 
+export const updateUser = (user) => dispatch => UserAPIUtil.updateUser(user)
+  .then(e => dispatch(updateUserInfo(user)))
+  .then(() => dispatch(clearSettingsErrors()))
+  .fail(e => dispatch(settingsError(e.responseJSON)));
+
+export const updateUserAvatar = (id, avatar) => dispatch => UserAPIUtil.updateUserAvatar(id, avatar)
+  .then(user => dispatch(updateUserInfo(user)))
+  .then(() => dispatch(clearSettingsErrors()))
+  .fail(e => dispatch(settingsError(e.responseJSON)));
+
+export const clearSettingsErrors = () => ({
+  type: SETTINGS_ERROR,
+  errors: {}
+});
+
+const settingsError = (errors) => ({
+  type: SETTINGS_ERROR,
+  errors
+});
+
+const updateUserInfo = (user) => ({
+  type: UPDATE_USER,
+  user
+});
+
 export const receiveUser = (user) => ({
   type: RECEIVE_USER,
   user
@@ -37,3 +65,4 @@ const clearUserError = () => ({
   type: USER_ERROR,
   error: null
 });
+

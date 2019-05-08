@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Settings from "./settings";
-import { updateUser, clearSettingsErrors, updateUserAvatar } from "../../actions/session_actions";
+import { updateUser, clearSettingsErrors, updateUserAvatar } from "../../actions/user_actions";
 import { setLoading } from "../../actions/ui_actions";
 import { withRouter } from "react-router-dom";
 

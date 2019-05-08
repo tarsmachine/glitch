@@ -4,3 +4,6 @@ if user.avatar.attached?
 else
   json.avatar image_url("creepy-ghost.svg")
 end
+json.videos do
+  json.array! user.video_ids
+end

@@ -4,6 +4,7 @@ import {Route, Switch, Redirect} from "react-router-dom";
 import {AuthRoute, ProtectedRoute} from "../util/route_util";
 import SettingsContainer from "./settings/settings_container";
 import UserShowContainer from "./user/show_container";
+import UploadContainer from "./video/upload_container";
 import Directory from "./user/directory";
 import Index from "./index/index";
 export default () => (
@@ -14,6 +15,7 @@ export default () => (
         <Route exact path="/" component={Index} />
         <AuthRoute exact path="/login" component={Index} />
         <AuthRoute exact path="/signup" component={Index} />
+        <ProtectedRoute exact path="/videos/upload" component={UploadContainer} />
         <ProtectedRoute exact path="/settings" component={SettingsContainer} />
         <Route path="/directory" component={Directory} />
         <Route path="/:username" component={UserShowContainer} />

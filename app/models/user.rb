@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_one_attached :avatar
   validates :avatar, blob: { content_type: :image, size_range: 0..500.kilobytes }
 
+  has_many :videos
+  
   attr_reader :password
   after_initialize :ensure_session_token
 

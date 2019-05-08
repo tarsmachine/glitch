@@ -34,6 +34,7 @@ class ProfileDropdown extends React.Component{
                 {this.props.currentUser.username}
               </li>
               <li className="no-hover new-section"/>
+              <li onClick={this.redirect("/videos/upload")}><i className="fas fa-upload" />Upload Video</li>
               <li onClick={this.redirect("/settings")}><i className="fas fa-cog" />Settings</li>
               <li onClick={this.props.logout}><i className="fas fa-sign-out-alt" /><div>Log Out</div></li>
             </>);

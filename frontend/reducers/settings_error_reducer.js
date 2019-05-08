@@ -1,4 +1,4 @@
-import {SETTINGS_ERROR} from '../actions/session_actions';
+import {SETTINGS_ERROR} from '../actions/user_actions';
 
 export default (state = {}, action)=>{
   Object.freeze(state);
