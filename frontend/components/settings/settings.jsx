@@ -36,6 +36,9 @@ class Settings extends React.Component{
   componentWillUnmount(){
     this.props.clearErrors();
   }
+  disabled(){
+    return (this.state.description === this.props.currentUser.description);
+  }
 
   render(){
     return (
@@ -52,6 +55,7 @@ class Settings extends React.Component{
                 <label htmlFor="avatar">Select an Image</label>
                 {this.props.errors.avatar ? <span className="errors">{`File: ${this.props.errors.avatar}`}</span> : ""}
                 <span className="subtext">Please choose an image file under 500kb (.png, .jpg, .gif, .svg)</span>
+                <span className="subtext">(Updates Immediately)</span>
               </div>
             </form>
           </li>
@@ -67,7 +71,7 @@ class Settings extends React.Component{
                   </div>
                 </li>
               </ul>
-              <button>Save Changes</button>
+              <button disabled={this.disabled()}>Save Description</button>
             </form>
           </li>
         </ul>

@@ -55,6 +55,9 @@
           margin-left: 50px;
           display: flex;
           flex-direction: column;
+          .subtext{
+            margin-bottom: 3px;
+          }
           
           //custom file input from Osvaldas Valutis
           //https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
@@ -153,12 +156,12 @@
         }
         button{
           align-self: flex-end;
-          border: .5px solid $purple;
+          border: 2px solid $purple;
           color: $purple;
-          border-radius: 5px;
+          border-radius: 20px;
           margin: 10px;
           background-color: $grey;
-          font-size: 12px;
+          font-size: 14px;
           padding: 10px;
         }
         button:hover, button:active, button:focus{
@@ -168,6 +171,12 @@
         button:active{
           border-color: $light-purple;
           box-shadow: $purple-glow 0 0 10px -1px;
+        }
+        button:disabled{
+          cursor: not-allowed;
+          border-color: $light-grey;
+          color: $muted-purple;
+          background-color: $light-grey;
         }
       }
     }

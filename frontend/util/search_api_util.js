@@ -8,6 +8,11 @@ export const searchUsers = (q, offset) => $.ajax({
   method: "GET",
   data: { q, offset }
 });
+export const searchVideos = (q, offset) => $.ajax({
+  url: "/api/search/users",
+  method: "GET",
+  data: { q, offset }
+});
 
 export const searchType = (q, type=false, limit=undefined, offset=0)=>{
   const url = type ? `/api/search/${type}` : "/api/search";
