@@ -37,6 +37,7 @@ class Settings extends React.Component {
   }
   disabled(){
     if(!this.state.mounted) return true;
+    if(this.props.loading) return true;
     const source = document.querySelector("#source").files[0];
     const thumbnail = document.querySelector("#thumbnail").files[0];
     return !(source && thumbnail && this.state.title && !this.props.loading);
@@ -65,9 +66,9 @@ class Settings extends React.Component {
             </div>
             <div className="selector">
               
-              <input type="file" id="source" name="video[source]" accept="video/*" onChange={this.handleInput("source")}/>
+              <input type="file" id="source" name="video[source]" accept="video/*, .mp4" onChange={this.handleInput("source")}/>
               <label htmlFor="source">Select Source Video</label>
-              {this.state.source ? <span>{this.state.source}</span> : <span className="subtext">Please choose a video file under 5MB</span>}
+              {this.state.source ? <span>{this.state.source}</span> : <span className="subtext">Please choose a video file under 25MB</span>}
               {this.props.errors.source ? <span className="errors">{`File: ${this.props.errors.source}`}</span> : ""}
             </div>
           </div>
