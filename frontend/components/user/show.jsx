@@ -3,6 +3,7 @@ import LogoIcon from "../nav/logo_icon";
 import {Link, Route} from "react-router-dom";
 import VideoIndexContainer from "./video_index_container";
 import VideoShowContainer from "./video_show_container";
+import IndexContainer from "../index/index_container";
 import UserBar from "./userbar";
 import Description from "./description";
 
@@ -36,6 +37,7 @@ class UserShow extends React.Component{
               <Route exact path="/:username/videos" component={VideoIndexContainer} />
               <Route exact path="/:username/videos/:videoId" component={VideoShowContainer} />
               <Route exact path="/:username" render={ (props)=><Description {...props} user={this.props.user} />} />
+              <Route exact path="/:username" component={IndexContainer} />
             </div>);
   }
 }

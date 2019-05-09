@@ -8,6 +8,8 @@ export const CLEAR_RESULTS = "CLEAR_RESULTS";
 export const SHOW_SEARCH = "SHOW_SEARCH";
 export const SEARCH_OFFSET = "SEARCH_OFFSET";
 export const SEARCH_ERRORS = "SEARCH_ERRORS";
+export const TOP_VIDEOS = "TOP_VIDEOS";
+export const LATEST_VIDEOS = "LATEST_VIDEOS";
 
 export const search = query => dispatch => {
   dispatch(setLoading(true));
@@ -50,6 +52,62 @@ export const searchVideos = (query, offset=0) => dispatch => {
   });
 };
 
+export const fetchTopVideos = (limit=5, offset=0) => dispatch => { 
+  dispatch(setLoading(true));
+  return SearchAPIUtil.topVideos(limit, offset)
+  .then(res=>{
+    dispatch(setLoading(false));
+    dispatch(topVideos(res.videos)); 
+    dispatch(receiveVideos(res.videos));
+    dispatch(clearSearchErrors());
+  }).fail(err=>{
+    dispatch(setLoading(false));
+    dispatch(searchErrors(err.responseJSON));
+  });
+};
+
+export const fetchUserTopVideos = (username, limit=5, offset=0) => dispatch => { 
+  dispatch(setLoading(true));
+  return SearchAPIUtil.userTopVideos(username, limit, offset)
+  .then(res=>{
+    dispatch(setLoading(false));
+    dispatch(topVideos(res.videos)); 
+    dispatch(receiveVideos(res.videos));
+    dispatch(clearSearchErrors());
+  }).fail(err=>{
+    dispatch(setLoading(false));
+    dispatch(searchErrors(err.responseJSON));
+  });
+};
+
+export const fetchLatestVideos = (limit=5, offset=0) => dispatch => { 
+  dispatch(setLoading(true));
+  return SearchAPIUtil.latestVideos(limit, offset)
+  .then(res=>{
+    dispatch(setLoading(false));
+    dispatch(latestVideos(res.videos)); 
+    dispatch(receiveVideos(res.videos));
+    dispatch(clearSearchErrors());
+  }).fail(err=>{
+    dispatch(setLoading(false));
+    dispatch(searchErrors(err.responseJSON));
+  });
+};
+
+export const fetchUserLatestVideos = (username, limit=5, offset=0) => dispatch => { 
+  dispatch(setLoading(true));
+  return SearchAPIUtil.userLatestVideos(username, limit, offset)
+  .then(res=>{
+    dispatch(setLoading(false));
+    dispatch(latestVideos(res.videos)); 
+    dispatch(receiveVideos(res.videos));
+    dispatch(clearSearchErrors());
+  }).fail(err=>{
+    dispatch(setLoading(false));
+    dispatch(searchErrors(err.responseJSON));
+  });
+};
+
 export const searchType = (query, type, limit, offset) => dispatch => { 
   dispatch(setLoading(true));
   return SearchAPIUtil.searchType(query, type, limit, offset)
@@ -81,6 +139,16 @@ export const clearErrors = () => ({
 export const searchResults = (results) => ({
   type: SEARCH_RESULTS,
   results
+});
+
+export const topVideos = (top) => ({
+  type: TOP_VIDEOS,
+  top
+});
+
+export const latestVideos = (latest) => ({
+  type: LATEST_VIDEOS,
+  latest
 });
 
 export const searchOffset = (offset) => ({

@@ -6,15 +6,16 @@ import SettingsContainer from "./settings/settings_container";
 import UserShowContainer from "./user/show_container";
 import UploadContainer from "./video/upload_container";
 import DirectoryContainer from "./user/directory_container";
-import Index from "./index/index";
+import IndexContainer from "./index/index_container";
+
 export default () => (
   <>
     <NavBarContainer />
     <div className="body">
       <Switch>
-        <Route exact path="/" component={Index} />
-        <AuthRoute exact path="/login" component={Index} />
-        <AuthRoute exact path="/signup" component={Index} />
+        <Route exact path="/" component={IndexContainer} />
+        <AuthRoute exact path="/login" component={IndexContainer} />
+        <AuthRoute exact path="/signup" component={IndexContainer} />
         <ProtectedRoute exact path="/videos/upload" component={UploadContainer} />
         <ProtectedRoute exact path="/settings" component={SettingsContainer} />
         <Route path="/directory" component={DirectoryContainer} />
