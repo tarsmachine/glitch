@@ -15,20 +15,32 @@ export const fetchUser = (username) => dispatch => {
   .then(res =>{
     dispatch(setLoading(false));
     dispatch(receiveUser(res));
+    dispatch(clearUserError());
   } )
-  .then(() => dispatch(clearUserError()))
   .fail(e => {
     dispatch(setLoading(false));
     dispatch(userError(true));
   });
 };
-
+export const fetchUsers = (limit=100, offset=0) => dispatch => {
+  dispatch(setLoading(true));
+  return UserAPIUtil.fetchUsers(limit, offset)
+    .then(res => {
+      dispatch(setLoading(false));
+      dispatch(receiveUsers(res));
+      dispatch(clearUserError());
+    })
+    .fail(e => {
+      dispatch(setLoading(false));
+      dispatch(userError(true));
+    });
+};
 export const updateUser = (user) => dispatch => UserAPIUtil.updateUser(user)
   .then(e => dispatch(updateUserInfo(user)))
   .then(() => dispatch(clearSettingsErrors()))
   .fail(e => dispatch(settingsError(e.responseJSON)));
 
-export const updateUserAvatar = (id, avatar) => dispatch => UserAPIUtil.updateUserAvatar(id, avatar)
+export const updateUserAvatar = (username, avatar) => dispatch => UserAPIUtil.updateUserAvatar(username, avatar)
   .then(user => dispatch(updateUserInfo(user)))
   .then(() => dispatch(clearSettingsErrors()))
   .fail(e => dispatch(settingsError(e.responseJSON)));

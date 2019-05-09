@@ -5,7 +5,8 @@ import { withRouter } from "react-router-dom";
 
 const mSTP = state => {
   const currentUser = state.entities.users[state.session.currentUser];
-  const errors = state.errors.videos;
+  const errors = state.errors.video;
+  const loading = state.ui.loading;
   return {
     currentUser,
     errors

@@ -1,0 +1,144 @@
+.upload-video{
+  font-family: $sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: $offwhite;
+  flex-grow: 1;
+  box-sizing: border-box;
+  h1{
+    width: 100%;
+    margin: 0px;
+    padding: 10px 0px;;
+    font-size: 24px;
+    font-weight: 400;
+    border-bottom: 1px solid $light-grey;
+  }
+  .video-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: $grey;
+    border: 1px solid $light-grey;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 1000px;
+    div{
+      background-color: $white;
+      width: 100%;
+      padding: 25px;
+      display: flex;
+      box-sizing: border-box;
+      label {
+        font-weight: 700;
+        width: 200px;
+        text-align: right;
+        padding-right: 20px;
+        padding-top: 5px;
+        box-sizing: border-box;
+      }
+      input{
+        border: 1px solid $light-grey;
+        border-radius: 3px;
+        padding: 5px 10px;
+        flex-grow: 1;
+      }
+      input:focus, input:active, textarea:focus, textarea:active{
+        border: 1px solid $purple;
+        box-shadow: $purple-glow 0px 0px 10px -1px;
+      }
+      textarea{
+        border: 1px solid $light-grey;
+        border-radius: 3px;
+        height: 70px;
+        padding: 10px;
+        box-sizing: border-box;
+        flex-grow: 1;
+        resize: none;
+      }
+      span{
+        margin: 10px 0px;
+      }
+      > span.errors{
+        color: red;
+        margin-bottom: 5px;
+      }
+    }
+    .selector{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+      //custom file input from Osvaldas Valutis
+      //https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
+      input[type="file"]{
+        height: .0001px;
+        width: .0001px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+        flex-grow: 0;
+      }
+      input + label{
+        margin-bottom: 10px;
+        
+        color: $purple;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 10px;
+        width: 200px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        border:3px solid $purple;
+      }
+      input + label:hover{
+        color: $white;
+        background-color: $light-purple;
+        border: 3px solid $light-purple;
+      }
+      input:active + label{
+        color: $white;
+        background-color: $dark-purple;
+        box-shadow: $purple-glow 0 0 10px -1px;
+        border: 3px solid $dark-purple;
+      }
+      input:focus + label{
+        box-shadow: $purple-glow 0 0 10px -1px;
+      }
+      .subtext{
+        padding-left: 10px;
+      }
+      
+    }
+    button{
+      align-self: flex-end;
+      border: .5px solid $purple;
+      color: $purple;
+      border-radius: 5px;
+      margin: 10px;
+      background-color: $grey;
+      font-size: 12px;
+      padding: 7px 10px;
+    }
+    button:hover, button:active, button:focus{
+      background-color: $purple;
+      color: $white;
+    }
+    button:active{
+      border-color: $light-purple;
+      box-shadow: $purple-glow 0 0 10px -1px;
+    }
+    button:disabled{
+      border: .5px solid $grey;
+      background-color: $light-grey;
+      color: $dark-grey;
+    }
+  }
+}

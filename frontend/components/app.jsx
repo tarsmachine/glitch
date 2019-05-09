@@ -5,7 +5,7 @@ import {AuthRoute, ProtectedRoute} from "../util/route_util";
 import SettingsContainer from "./settings/settings_container";
 import UserShowContainer from "./user/show_container";
 import UploadContainer from "./video/upload_container";
-import Directory from "./user/directory";
+import DirectoryContainer from "./user/directory_container";
 import Index from "./index/index";
 export default () => (
   <>
@@ -17,7 +17,7 @@ export default () => (
         <AuthRoute exact path="/signup" component={Index} />
         <ProtectedRoute exact path="/videos/upload" component={UploadContainer} />
         <ProtectedRoute exact path="/settings" component={SettingsContainer} />
-        <Route path="/directory" component={Directory} />
+        <Route path="/directory" component={DirectoryContainer} />
         <Route path="/:username" component={UserShowContainer} />
         <Redirect to="/" />
       </Switch>

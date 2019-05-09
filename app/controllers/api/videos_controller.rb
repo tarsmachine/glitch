@@ -2,9 +2,9 @@ class Api::VideosController < ApplicationController
 
   def index
     if(params[:user_id])
-      @videos = Video.with_attached_thumbnail.find_by(user_id: params[:user_id])
+      @videos = User.includes(:videos).find_by(username: params[:user_id]).videos
     else
-      @videos = Video.with_attached_thumbnail.all
+      @videos = Video.with_attached_thumbnail.with_attached_source.all
     end
   end
 

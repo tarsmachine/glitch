@@ -11,6 +11,9 @@ class SearchDropdown extends React.Component{
       case "users":
         text = "Channels";
         break;
+      case "videos":
+        text = "Videos";
+        break;
       default:
         text = "Top Results";
         break;
@@ -46,11 +49,35 @@ class SearchDropdown extends React.Component{
         }>
           <span>Channels</span>
         </span>
-        <ul className={this.props.loading ? "hidden" : ""}>
+        <ul className={this.props.loading || (this.props.category && this.props.category!=="users") ? "hidden" : ""}>
           {users.map((user)=>(
             <li className="search-user" key={user.id} onClick={this.redirect(`/${user.username}`)}>
               <img src={user.avatar} />
               <span>{user.username}</span>
+            </li>
+          ))}
+        </ul>
+      </>
+    );
+  }
+  videoIndex(){
+    let videos = Object.values(this.props.results.videos);
+    if(!this.props.category) videos=videos.slice(0,5);
+    return (
+      <>
+        <span className={`list-title ${this.props.category ? "hidden" : ""}`} onClick={(e)=>{
+          e.preventDefault();
+          e.stopPropagation();
+          this.props.setCategory("videos");
+        }
+        }>
+          <span>Videos</span>
+        </span>
+        <ul className={this.props.loading || (this.props.category && this.props.category !== "videos") ? "hidden" : ""}>
+          {videos.map((video)=>(
+            <li className="search-video" key={video.id} onClick={this.redirect(`/${video.username}/videos/${video.id}`)}>
+              <img src={video.thumbnail} />
+              <span>{video.title}</span>
             </li>
           ))}
         </ul>
@@ -80,6 +107,7 @@ class SearchDropdown extends React.Component{
         <div className="search-dropdown">
         <span className="search-title">{this.title()}</span>
         {this.props.results.users ? this.userIndex() : ""}
+        {this.props.results.videos ? this.videoIndex() : ""}
         {this.loading()}
         {this.noResults()}
       </div>

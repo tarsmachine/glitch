@@ -30,7 +30,7 @@ class Settings extends React.Component{
     fd.append("user[avatar]", avatar);
     if(avatar){
       this.props.setLoading(true);
-      this.props.updateUserAvatar(this.props.currentUser.id, fd).then(()=>this.props.setLoading(false), ()=>this.props.setLoading(false));
+      this.props.updateUserAvatar(this.props.currentUser.username, fd).then(()=>this.props.setLoading(false), ()=>this.props.setLoading(false));
     }
   }
   componentWillUnmount(){

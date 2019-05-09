@@ -1,0 +1,77 @@
+.directory{
+  padding: 20px;
+  display: flex;
+  ul{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    li{
+      margin: 10px;
+      a, a:visited{
+        color: $black;
+        text-decoration: none;
+      }
+      a{
+        position: relative;
+        
+        border-radius: 3px;
+        font-family: $sans-serif;
+        display: flex;
+        flex-direction: column;
+
+        border: 1px solid $offwhite;
+        box-shadow: 0 0px 10px -1px rgba(0,0,0,.1);
+        img{
+          width: 150px;
+          height: 150px;
+          border-radius: 3px;
+          background-color: $purple;
+        }
+        span{
+          color: $dark-purple;
+          font-size: 15px;
+        }
+        .username{
+          padding: 10px 20px 15px 20px;
+        }
+        .description{
+          display: none;
+          position: absolute;
+          top: 0px;
+          bottom: 0px;
+          left: 0px;
+          right: 0px;
+        }
+      }
+      a:hover{
+        .username{
+          text-decoration: underline;
+        }
+        .description{
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          border-radius: 3px;
+          background-color: $black;
+          color: $white;
+          padding: 20px;
+          opacity: .66;
+          box-shadow: $purple-glow 0px 0px 10px -1px;
+          animation: directory-hover-effect .5s 1;
+          box-sizing:border-box;
+          border: 1px solid $purple;
+        }
+      }
+    }
+  }
+}
+@keyframes directory-hover-effect{
+  from {
+    opacity: 0;
+    box-shadow: none;
+  }
+  to {
+    opacity: .66;
+    box-shadow: $purple-glow 0px 0px 10px -1px;
+  }
+}

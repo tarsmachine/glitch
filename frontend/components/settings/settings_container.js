@@ -17,7 +17,7 @@ const mDTP = dispatch => ({
   updateUser: (user) => dispatch(updateUser(user)),
   clearErrors: () => dispatch(clearSettingsErrors()),
   setLoading: b=> dispatch(setLoading(b)),
-  updateUserAvatar: (id, avatar)=>dispatch(updateUserAvatar(id, avatar)),
+  updateUserAvatar: (username, avatar)=>dispatch(updateUserAvatar(username, avatar)),
 });
 
 export default withRouter(connect(mSTP, mDTP)(Settings));

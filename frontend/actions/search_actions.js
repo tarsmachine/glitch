@@ -1,5 +1,6 @@
 import * as SearchAPIUtil from "../util/search_api_util";
 import {receiveUsers} from "./user_actions";
+import {receiveVideos} from "./video_actions";
 import {setLoading} from "./ui_actions";
 
 export const SEARCH_RESULTS = "SEARCH_RESULTS";
@@ -35,6 +36,19 @@ export const searchUsers = (query, offset=0) => dispatch => {
     dispatch(searchErrors(err.responseJSON));
   });
 };
+export const searchVideos = (query, offset=0) => dispatch => { 
+  dispatch(setLoading(true));
+  return SearchAPIUtil.searchVideos(query, offset)
+  .then(res=>{
+    dispatch(setLoading(false));
+    dispatch(searchResults(res)); 
+    dispatch(receiveVideos(res.videos));
+    dispatch(clearSearchErrors());
+  }).fail(err=>{
+    dispatch(setLoading(false));
+    dispatch(searchErrors(err.responseJSON));
+  });
+};
 
 export const searchType = (query, type, limit, offset) => dispatch => { 
   dispatch(setLoading(true));
@@ -44,6 +58,9 @@ export const searchType = (query, type, limit, offset) => dispatch => {
     dispatch(searchResults(res));
     if(res.users){
       dispatch(receiveUsers(res.users));
+    }
+    if(res.videos){
+      dispatch(receiveVideos(res.videos));
     }
     dispatch(clearSearchErrors());
   }).fail(err=>{

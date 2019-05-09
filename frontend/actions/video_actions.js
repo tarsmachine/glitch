@@ -17,12 +17,12 @@ export const fetchVideos = () => dispatch => {
     })
     .fail(e => {
       dispatch(setLoading(false));
-      dispatch(videoErrors(true));
+      dispatch(videoErrors(e.responseJSON));
     });
 };
-export const fetchUserVideos = (id) => dispatch => {
+export const fetchUserVideos = (username) => dispatch => {
   dispatch(setLoading(true));
-  return VideoAPIUtil.fetchUserVideos(id)
+  return VideoAPIUtil.fetchUserVideos(username)
     .then(res => {
       dispatch(setLoading(false));
       dispatch(receiveVideos(res));
@@ -30,7 +30,7 @@ export const fetchUserVideos = (id) => dispatch => {
     })
     .fail(e => {
       dispatch(setLoading(false));
-      dispatch(videoErrors(true));
+      dispatch(videoErrors(e.responseJSON));
     });
 };
 export const fetchVideo = (id) => dispatch => {
@@ -43,7 +43,7 @@ export const fetchVideo = (id) => dispatch => {
     })
     .fail(e => {
       dispatch(setLoading(false));
-      dispatch(videoErrors(true));
+      dispatch(videoErrors(e.responseJSON));
     });
 };
 export const createVideo = (video) => dispatch => {
@@ -51,13 +51,13 @@ export const createVideo = (video) => dispatch => {
   return VideoAPIUtil.createVideo(video)
     .then(res => {
       dispatch(setLoading(false));
-      dispatch(receiveVideos(res));
+      dispatch(receiveVideo(res));
       dispatch(clearVideoErrors());
-      dispatch(fetchUser(res.user_id));
+      dispatch(fetchUser(res.username));
     })
     .fail(e => {
       dispatch(setLoading(false));
-      dispatch(videoErrors(true));
+      dispatch(videoErrors(e.responseJSON));
     });
 };
 
@@ -75,5 +75,5 @@ export const videoErrors = (errors) => ({
 });
 export const clearVideoErrors = () => ({
   type: VIDEO_ERRORS,
-  errors: []
+  errors: {}
 });

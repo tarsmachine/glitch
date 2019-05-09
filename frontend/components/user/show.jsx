@@ -1,7 +1,8 @@
 import React from "react";
 import LogoIcon from "../nav/logo_icon";
 import {Link, Route} from "react-router-dom";
-import VideoIndex from "./videoindex";
+import VideoIndexContainer from "./video_index_container";
+import VideoShowContainer from "./video_show_container";
 import UserBar from "./userbar";
 import Description from "./description";
 
@@ -32,7 +33,8 @@ class UserShow extends React.Component{
     );
     return (<div className="user-show">
               <UserBar user={this.props.user} currentUser={this.props.currentUser} />
-              <Route path="/:username/videos" component={VideoIndex} />
+              <Route exact path="/:username/videos" component={VideoIndexContainer} />
+              <Route exact path="/:username/videos/:videoId" component={VideoShowContainer} />
               <Route exact path="/:username" render={ (props)=><Description {...props} user={this.props.user} />} />
             </div>);
   }

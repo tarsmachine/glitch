@@ -1,4 +1,6 @@
-json.extract! video, :id, :user_id, :title, :description
+json.extract! video, :id, :title, :description
+json.createdAt video.created_at
+json.username video.user.username
 if video.thumbnail.attached?
   json.thumbnail url_for(video.thumbnail)
 end

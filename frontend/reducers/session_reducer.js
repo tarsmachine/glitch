@@ -1,6 +1,6 @@
 import {LOGIN, LOGOUT} from '../actions/session_actions';
 
-export default (state = {currentUserId: null}, action)=>{
+export default (state = {currentUser: null}, action)=>{
   Object.freeze(state);
   switch(action.type){
     case LOGIN:
