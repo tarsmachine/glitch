@@ -10,7 +10,8 @@ const mSTP = (state, ownProps)=>{
     if(state.entities.videos[video]) videos.push(state.entities.videos[video]);
   });
   return {
-    videos 
+    videos,
+    loading
   };
 };
 
