@@ -42,11 +42,6 @@ class Settings extends React.Component {
                 let percentComplete = evt.loaded / evt.total;
                 percentComplete = parseInt(percentComplete * 100);
                 progress.value=percentComplete;
-
-                if (percentComplete === 100) {
-
-                }
-
               }
             }, false);
 
