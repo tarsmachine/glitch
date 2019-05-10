@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Upload from "./upload";
-import { createVideo, clearVideoErrors } from "../../actions/video_actions";
+import { createVideo, receiveVideo, clearVideoErrors, videoErrors } from "../../actions/video_actions";
 import { withRouter } from "react-router-dom";
 
 const mSTP = state => {
@@ -15,6 +15,8 @@ const mSTP = state => {
 
 const mDTP = dispatch => ({
   createVideo: (video) => dispatch(createVideo(video)),
+  receiveVideo: (video)=>dispatch(receiveVideo(video)),
+  videoErrors: (errors)=>dispatch(videoErrors(errors)),
   clearErrors: () => dispatch(clearVideoErrors()),
   setLoading: b => dispatch(setLoading(b)),
 });

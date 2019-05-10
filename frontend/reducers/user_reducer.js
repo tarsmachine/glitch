@@ -10,8 +10,7 @@ export default (state={}, action)=>{
       newState[action.user.username] = action.user;
       return newState;
     case UPDATE_USER:
-      newState[action.user.username] = action.user;
-      return newState;
+      return merge(newState, {[action.user.username]: action.user});
     case RECEIVE_USER:
       newState[action.user.username] = action.user;
       return newState;

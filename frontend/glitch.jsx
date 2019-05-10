@@ -26,17 +26,17 @@ document.addEventListener("DOMContentLoaded",()=>{
   }
 
   const store = configureStore(preloadedState);
-  //window.getState = store.getState;
-  
-  window.dispatch = store.dispatch;
   window.getState = store.getState;
-  window.SessionAPIUtil = SessionAPIUtil;
-  window.SessionActions = SessionActions;
-  window.UserActions = UserActions;
-  window.setLoading = (b) => store.dispatch(UIActions.setLoading(b));
-  window.log = (...e)=>console.log(...e);
-  window.logErr = (e)=>console.log("Error:",e.responseJSON);
-  window.SearchActions = SearchActions;
+  
+  // window.dispatch = store.dispatch;
+  // window.getState = store.getState;
+  // window.SessionAPIUtil = SessionAPIUtil;
+  // window.SessionActions = SessionActions;
+  // window.UserActions = UserActions;
+  // window.setLoading = (b) => store.dispatch(UIActions.setLoading(b));
+  // window.log = (...e)=>console.log(...e);
+  // window.logErr = (e)=>console.log("Error:",e.responseJSON);
+  // window.SearchActions = SearchActions;
   
   ReactDOM.render(<Root store={store} />, document.getElementById("root"));
 });

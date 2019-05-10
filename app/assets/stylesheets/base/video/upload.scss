@@ -142,3 +142,30 @@
     }
   }
 }
+.upload-modal{
+  font-family: $sans-serif;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: $white;
+  padding: 10px;
+  padding-bottom: 20px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .upload-progress{
+    width: 40vw;
+    height: 20px;
+    margin: 10px;
+  }
+}
+.upload-overlay{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(0,0,0,.8);
+}

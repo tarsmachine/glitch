@@ -6,6 +6,7 @@ ul.profile-dropdown{
   border-radius: 5px;
   padding: 10px;
   display: flex;
+  z-index: 3;
   flex-direction: column;
   border: 1px solid $light-grey;
   li{
@@ -67,5 +68,5 @@ ul.profile-dropdown:after{
   position: absolute;
   top: -5px;
   right: 10px;
-  z-index: 2;
+  z-index: 4;
 }

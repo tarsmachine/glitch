@@ -1,4 +1,5 @@
 import React from "react";
+import ReactModal from "react-modal";
 
 class Settings extends React.Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class Settings extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.disabled = this.disabled.bind(this);
-
+    ReactModal.setAppElement("#root");
   }
   handleInput(type) {
     return (e) => {
@@ -18,17 +19,49 @@ class Settings extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     if(this.state.submitting) return;
-    this.setState({submitting: true});
     const fd = new FormData();
     fd.append("video[title]", this.state.title);
     fd.append("video[description]", this.state.description);
     fd.append("video[thumbnail]", document.querySelector("#thumbnail").files[0]);
     fd.append("video[source]", document.querySelector("#source").files[0]);
     if(!this.disabled()){ //don't waste time trying to process an invalid form! front end validation
-      alert("Uploading video. This may take a while. You will be redirected when complete");
-      this.props.createVideo(fd).then(() => this.props.history.push(`/${this.props.currentUser.username}/videos`));
-    }else{
-      alert("Please fill in all required fields");
+      
+      this.setState({ submitting: true },
+        ()=>$.ajax({
+          url: `/api/videos`,
+          method: "POST",
+          data: fd,
+          processData: false,
+          contentType: false,
+          xhr: function () {
+            const xhr = new XMLHttpRequest();
+
+            xhr.upload.addEventListener("progress", function (evt) {
+              if (evt.lengthComputable) {
+                const progress = document.querySelector("#upload-progress");
+                let percentComplete = evt.loaded / evt.total;
+                percentComplete = parseInt(percentComplete * 100);
+                progress.value=percentComplete;
+
+                if (percentComplete === 100) {
+
+                }
+
+              }
+            }, false);
+
+            return xhr;
+          },
+        }).then((video)=>{
+          this.setState({ submitting: false });
+          this.props.receiveVideo(video);
+          this.props.clearErrors();
+          this.props.history.push(`/${this.props.currentUser.username}/videos`);
+        },(err)=>{
+          this.setState({submitting: false});
+          this.props.videoErrors(err.responseJSON);
+        })
+      );
     }
   }
   componentDidMount(){
@@ -79,6 +112,14 @@ class Settings extends React.Component {
             
             <button disabled={this.disabled()}>Upload Video</button>
           </form>
+          <ReactModal
+            isOpen={this.state.submitting}
+            className="upload-modal"
+            overlayClassName="upload-overlay"
+          >
+            <progress value="0" max="100" id="upload-progress" className="upload-progress" />
+            Uploading...
+          </ReactModal>
       </section>
     );
   }
