@@ -1,6 +1,6 @@
 # GlitchTV
 
-[Glitch](https://glitchtv.herokuapp.com) is a site meant to allow users to share video of gameplay with their fans. Content is currently provided by uploading VoDs (Video on Demand), which users may then watch. Users can keep track of favorite channels by following, and search the site for content.
+[Glitch](https://glitchtv.herokuapp.com) is a site meant to allow users to share video of gameplay with their fans. Content is currently provided by uploading VoDs (Video on Demand), which users may then watch. Users can keep track of favorite channels by following, and search the site for content. This project was built in 10 days.
 
 ## Technologies Leveraged
 
