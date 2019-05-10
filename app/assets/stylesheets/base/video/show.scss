@@ -75,7 +75,35 @@
     background-color: $darker-purple;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    height: 70px;
+    display: flex;
+    height: 50px;
+    padding: 10px 20px;
+    .follow-button{
+      background-color: $darker-purple;
+      border-radius: 5px;
+      border: 1px solid $white;
+      color: $white;
+      align-self: center;
+      padding: 7px 10px;
+      font-size: 14px;
+      i{
+        margin-right: 5px;
+      }
+    }
+    .follow-button:hover{
+      color: $offwhite;
+      border-color: $offwhite;
+    }
+    .follow-button:active, .follow-button:focus{
+      background-color: $darker-purple;
+      border: 1px solid $purple;
+      box-shadow: $purple-glow 0px 0px 10px -1px;
+    }
+    .follow-button:disabled{
+      background-color: $darker-purple;
+      color: $muted-purple;
+      cursor:not-allowed;
+    }
   }
   .video-info{
     display: flex;

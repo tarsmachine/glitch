@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :update, :show, :index] do
       resources :videos, only: [:index]
     end
+    post "users/:username/follow", to: "follows#create"
+    delete "users/:username/follow", to: "follows#destroy"
+    resources :follows, only: [:index]
     resource :session, only: [:create, :destroy]
     resources :videos, only: [:create, :show, :index]
     get "search", to: "search#show"

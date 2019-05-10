@@ -7,3 +7,4 @@ end
 json.videos do
   json.array! user.video_ids
 end
+json.set! :follows, user.follows.map{ |follow| follow.username }

@@ -6,7 +6,7 @@ const mSTP = (state,ownProps)=>({
   notFound: Boolean(state.errors.user),
   user: state.entities.users[ownProps.match.params.username],
   loading: state.ui.loading,
-  currentUser: state.session.currentUser
+  currentUser: state.entities.users[state.session.currentUser]
 });
 const mDTP = (dispatch, ownProps)=>({
   fetchUser: ()=>dispatch(fetchUser(ownProps.match.params.username))

@@ -1,22 +1,18 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import FollowButtonContainer from "./follow_button_container";
 
 class VideoShow extends React.Component{
   constructor(props){
     super(props);
   }
   componentDidMount(){
-    this.props.fetchVideo().then(()=>{
-      const video = document.querySelector("#video-player");
-      
-    });
+    this.props.fetchVideo();
   }
   componentDidUpdate(oldProps){
-    if (this.props.match.params.videoId !== oldProps.match.params.videoId) this.props.fetchVideo().then(() => {
-      const video = document.querySelector("#video-player");
-      
-    });
+    if (this.props.match.params.videoId !== oldProps.match.params.videoId) this.props.fetchVideo();
   }
+  
   render(){
     const videoSrc = this.props.video ? this.props.video.source : "";
     const title = this.props.video ? this.props.video.title : "";
@@ -36,7 +32,10 @@ class VideoShow extends React.Component{
           </Link>
         </div>
         <video controls autoPlay playsInline muted src={videoSrc} id="video-player" className="video-player"/>
-        <div className="bottom-bar"></div>
+        <div className="bottom-bar">
+          {this.props.currentUser ? <FollowButtonContainer currentUser={this.props.currentUser} username={username} />
+           : <span>Sign in to follow {username}</span>}
+        </div>
         <div className="video-info">
           <span className="title">{title}</span>
           <span className="date">{time}</span>

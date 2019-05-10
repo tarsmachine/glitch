@@ -43,4 +43,31 @@
     border-bottom-color: $purple;
     transition: 0;
   }
+  .spacer{
+    flex-grow: 1;
+  }
+  .follow-button{
+    background-color: $purple;
+    border-radius: 5px;
+    border: 1px solid $purple;
+    color: $white;
+    align-self: center;
+    padding: 7px 10px;
+    font-size: 14px;
+    i{
+      margin-right: 5px;
+    }
+  }
+  .follow-button:hover{
+    background-color: $light-purple;
+  }
+  .follow-button:active, .follow-button:focus{
+    background-color: $dark-purple;
+    box-shadow: $purple-glow 0px 0px 10px -1px;
+  }
+  .follow-button:disabled{
+    background-color: $purple;
+    color: $muted-purple;
+    cursor:not-allowed;
+  }
 }

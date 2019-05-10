@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   validates :username, :email, :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: true
+  validates :description, length: {maximum: 300}
   validates :password, length: {minimum: 8, allow_nil: true}
   validates :username, format: { with: /\A[a-zA-Z0-9\_]+\Z/ }
   validates_exclusion_of :username, in: %w(settings login signup logout discover following directory videos index subscriptions video), message: "is a reserved word"
@@ -8,6 +9,24 @@ class User < ApplicationRecord
   validates :avatar, blob: { content_type: :image, size_range: 0..500.kilobytes }
 
   has_many :videos
+
+  has_many :user_follows,
+    foreign_key: :user_id,
+    class_name: :Follow,
+    dependent: :destroy
+
+  has_many :follows,
+    through: :user_follows,
+    source: :channel
+
+  has_many :user_followers,
+    class_name: :Follow,
+    foreign_key: :channel_id,
+    dependent: :destroy
+
+  has_many :followers,
+    through: :user_followers,
+    source: :user
   
   attr_reader :password
   after_initialize :ensure_session_token

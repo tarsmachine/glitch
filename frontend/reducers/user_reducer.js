@@ -4,13 +4,17 @@ import merge from 'lodash/merge';
 
 export default (state={}, action)=>{
   Object.freeze(state);
+  const newState = merge({}, state);
   switch(action.type){
     case LOGIN:
-      return merge({}, state, {[action.user.username]: action.user});
+      newState[action.user.username] = action.user;
+      return newState;
     case UPDATE_USER:
-      return merge({}, state, {[action.user.username]: action.user});
+      newState[action.user.username] = action.user;
+      return newState;
     case RECEIVE_USER:
-      return merge({}, state, {[action.user.username]: action.user});
+      newState[action.user.username] = action.user;
+      return newState;
     case RECEIVE_USERS:
       return merge({}, state, action.users);
     default:
