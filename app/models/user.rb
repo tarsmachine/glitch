@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates :description, length: {maximum: 300}
   validates :password, length: {minimum: 8, allow_nil: true}
   validates :username, format: { with: /\A[a-zA-Z0-9\_]+\Z/ }
-  validates_exclusion_of :username, in: %w(settings login signup logout discover following directory videos index subscriptions video), message: "is a reserved word"
+  validates_exclusion_of :username, in: %w(settings login signup logout discover following directory videos index subscriptions video api), message: "is a reserved word"
   has_one_attached :avatar
   validates :avatar, blob: { content_type: :image, size_range: 0..500.kilobytes }
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import SearchDropdownContainer from "./search_dropdown_container";
 
-// Credit David Walsh (https://davidwalsh.name/javascript-debounce-function)
 Function.prototype.throttle = function (interval) {
   let tooSoon = false;
   let args;
