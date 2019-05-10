@@ -25,7 +25,7 @@ class Settings extends React.Component {
     fd.append("video[thumbnail]", document.querySelector("#thumbnail").files[0]);
     fd.append("video[source]", document.querySelector("#source").files[0]);
     if(!this.disabled()){ //don't waste time trying to process an invalid form! front end validation
-      
+      //https://stackoverflow.com/a/22987941 for xhr events to update upload progress bar
       this.setState({ submitting: true },
         ()=>$.ajax({
           url: `/api/videos`,
