@@ -4,7 +4,7 @@ import {withRouter} from "react-router-dom";
 
 const mSTP = (state, ownProps)=>({
   results: state.entities.search,
-  loading: state.ui.loading
+  loading: state.ui.searching
 });
 
 const mDTP = (dispatch, ownProps)=>({

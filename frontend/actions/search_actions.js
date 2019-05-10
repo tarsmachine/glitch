@@ -1,7 +1,6 @@
 import * as SearchAPIUtil from "../util/search_api_util";
 import {receiveUsers} from "./user_actions";
 import {receiveVideos} from "./video_actions";
-import {setLoading} from "./ui_actions";
 
 export const SEARCH_RESULTS = "SEARCH_RESULTS";
 export const CLEAR_RESULTS = "CLEAR_RESULTS";
@@ -10,6 +9,7 @@ export const SEARCH_OFFSET = "SEARCH_OFFSET";
 export const SEARCH_ERRORS = "SEARCH_ERRORS";
 export const TOP_VIDEOS = "TOP_VIDEOS";
 export const LATEST_VIDEOS = "LATEST_VIDEOS";
+export const SEARCH_LOADING = "SEARCH_LOADING";
 
 export const search = query => dispatch => {
   dispatch(setLoading(true));
@@ -167,4 +167,8 @@ export const clearResults = ()=>({
 export const clearSearchErrors = ()=>({
   type: SEARCH_ERRORS,
   errors: {}
+});
+export const setLoading = (searching)=>({
+  type: SEARCH_LOADING,
+  searching
 });
