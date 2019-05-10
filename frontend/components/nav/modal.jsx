@@ -30,18 +30,21 @@ class Modal extends React.Component{
     if(this.props.type.toLowerCase() === "login"){
       this.props.login(this.state.user).then(()=>{
         this.handleCloseModal(); 
-        this.props.history.push("/");
+        // this.props.history.push("/");
       });
     }else{
       this.props.signup(this.state.user).then(()=>{
         this.handleCloseModal(); 
-        this.props.history.push("/");
+        // this.props.history.push("/");
       });
     }
   }
   demoLogin(e){
     e.preventDefault();
-    this.props.login({username: "demo_user", password: "demo1234"}).then(()=>{this.handleCloseModal(); this.props.history.push("/");});
+    this.props.login({username: "demo_user", password: "demo1234"}).then(()=>{
+      this.handleCloseModal(); 
+      //this.props.history.push("/");
+    });
   }
   togglePasswordVisibility(){
     return (e)=>{
