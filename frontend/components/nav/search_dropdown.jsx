@@ -48,6 +48,7 @@ class SearchDropdown extends React.Component{
         }
         }>
           <span>Channels</span>
+          <span className="all">{this.props.results.count.users}</span>
         </span>
         <ul className={this.props.loading || (this.props.category && this.props.category!=="users") ? "hidden" : ""}>
           {users.map((user)=>(
@@ -72,6 +73,7 @@ class SearchDropdown extends React.Component{
         }
         }>
           <span>Videos</span>
+          <span className="all">{this.props.results.count.videos}</span>
         </span>
         <ul className={this.props.loading || (this.props.category && this.props.category !== "videos") ? "hidden" : ""}>
           {videos.map((video)=>(
