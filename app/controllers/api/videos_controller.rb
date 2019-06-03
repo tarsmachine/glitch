@@ -30,8 +30,37 @@ class Api::VideosController < ApplicationController
       render json: {video: "Not Found"}, status: 404
     end
   end
+  def update
+    @video = Video.with_attached_source.with_attached_thumbnail.find_by(id: params[:id])
+    if @video.user_id != current_user.id
+      render json: {video: "You do not own this video"}, status: 422
+    else
+      if @video.update(update_params)
+        render :show
+      else
+        render json: @video.errors, status: 422
+      end
+    end
+  end
+
+  def destroy
+    @video = Video.with_attached_source.with_attached_thumbnail.find_by(id: params[:id])
+    if @video.user_id != current_user.id
+      render json: {video: "You do not own this video"}, status: 422
+    else
+      if @video.destroy
+        render json: {}
+      else
+        render json: @video.errors, status: 422
+      end
+    end
+  end
+  
   private
   def video_params
     params.require(:video).permit(:title, :description, :thumbnail, :source)
+  end
+  def update_params
+    params.require(:video).permit(:title, :description, :thumbnail)
   end
 end

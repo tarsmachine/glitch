@@ -75,9 +75,27 @@
     background-color: $darker-purple;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    color: $white;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 50px;
     padding: 10px 20px;
+    a{
+      border: 1px solid $white;
+      border-radius: 5px;
+      padding: 7px 10px;
+      font-size: 14px;
+    }
+    a:hover{
+      color: $offwhite;
+      border-color: $offwhite;
+      background-color: $darker-purple;
+    }
+    a:active, a:focus{
+      background-color: $purple-glow;
+      box-shadow: $purple-glow 0px 0px 10px -1px;
+    }
     span{
       color: $white;
       align-self: center;

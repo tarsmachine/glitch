@@ -4,10 +4,14 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 
 
 import * as SessionAPIUtil from '../util/session_api_util';
+import { receiveUser } from './user_actions';
 
 export const signup = (user)=>dispatch=>SessionAPIUtil.signup(user)
-  .then(res=>dispatch(loginUser(res)))
-  .then(()=>dispatch(clearSessionErrors()))
+  .then(res=>{
+    dispatch(receiveUser(res));
+    dispatch(loginUser(res));
+    dispatch(clearSessionErrors());
+  })
   .fail(e=>dispatch(loginError(e.responseJSON)));
 
 export const login = (user)=>dispatch=>SessionAPIUtil.login(user)

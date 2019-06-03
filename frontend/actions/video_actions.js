@@ -60,6 +60,32 @@ export const createVideo = (video) => dispatch => {
       dispatch(videoErrors(e.responseJSON));
     });
 };
+export const editVideo = (video) => dispatch => {
+  dispatch(setLoading(true));
+  return VideoAPIUtil.editVideo(video)
+    .then(res => {
+      dispatch(setLoading(false));
+      dispatch(receiveVideo(res));
+      dispatch(clearVideoErrors());
+      dispatch(fetchUser(res.username));
+    })
+    .fail(e => {
+      dispatch(setLoading(false));
+      dispatch(videoErrors(e.responseJSON));
+    });
+};
+export const deleteVideo = (videoId) => dispatch => {
+    dispatch(setLoading(true));
+  return VideoAPIUtil.deleteVideo(videoId)
+    .then(res => {
+      dispatch(setLoading(false));
+      dispatch(clearVideoErrors());
+    })
+    .fail(e => {
+      dispatch(setLoading(false));
+      dispatch(videoErrors(e.responseJSON));
+    });
+};
 
 export const receiveVideo = (video) => ({
   type: RECEIVE_VIDEO,

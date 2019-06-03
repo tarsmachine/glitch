@@ -8,6 +8,7 @@ import UploadContainer from "./video/upload_container";
 import DirectoryContainer from "./user/directory_container";
 import IndexContainer from "./index/index_container";
 import FollowsContainer from './user/follows_container';
+import EditVideoContainer from "./video/edit_container";
 
 export default () => (
   <>
@@ -21,6 +22,7 @@ export default () => (
         <ProtectedRoute exact path="/settings" component={SettingsContainer} />
         <Route path="/directory" component={DirectoryContainer} />
         <Route path="/following" component={FollowsContainer} />
+        <ProtectedRoute path="/:username/videos/:videoId/edit" component={EditVideoContainer} />
         <Route path="/:username" component={UserShowContainer} />
         <Redirect to="/" />
       </Switch>

@@ -52,6 +52,11 @@ class Modal extends React.Component{
       this.setState({showPassword: !this.state.showPassword});
     };
   }
+  componentDidUpdate(oldProps){
+    if(oldProps.type !== this.props.type){
+      this.setState({user:{username: "", email: "", password: ""}});
+    }
+  }
   render(){
     if(!this.props.type) return null;
     const signup = this.props.type.toLowerCase() === "signup";

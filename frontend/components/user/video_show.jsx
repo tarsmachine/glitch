@@ -18,6 +18,7 @@ class VideoShow extends React.Component{
     const title = this.props.video ? this.props.video.title : "";
     const username = this.props.user ? this.props.user.username : "";
     const userAvatar = this.props.user ? this.props.user.avatar : "";
+    const owner = (this.props.user && this.props.currentUser) ? this.props.user === this.props.currentUser : false;
     const date = this.props.video ? new Date(this.props.video.createdAt): "";
     const time = date ? `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`: "";
     return (
@@ -35,6 +36,7 @@ class VideoShow extends React.Component{
         <div className="bottom-bar">
           {this.props.currentUser ? <FollowButtonContainer currentUser={this.props.currentUser} username={username} />
            : <span>Sign in to follow {username}</span>}
+           { owner && this.props.video ? <Link to={`/${username}/videos/${this.props.video.id}/edit`}>Edit Video</Link> : "" }
         </div>
         <div className="video-info">
           <span className="title">{title}</span>

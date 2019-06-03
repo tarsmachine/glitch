@@ -1,4 +1,4 @@
-.upload-video{
+.upload-video, .edit-video{
   font-family: $sans-serif;
   display: flex;
   flex-direction: column;
@@ -116,6 +116,13 @@
         padding-left: 10px;
       }
       
+    }
+    .button-group{
+      display: flex;
+      justify-content: flex-end;
+      background-color: $grey;
+      font-size: 14px;
+      padding: 0px;
     }
     button{
       align-self: flex-end;

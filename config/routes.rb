@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     delete "users/:username/follow", to: "follows#destroy"
     resources :follows, only: [:index]
     resource :session, only: [:create, :destroy]
-    resources :videos, only: [:create, :show, :index]
+    resources :videos, only: [:create, :show, :index, :update, :destroy]
     get "search", to: "search#show"
     get "search/users", to: "search#users"
     get "search/videos", to: "search#videos"
