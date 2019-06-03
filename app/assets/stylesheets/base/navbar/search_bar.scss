@@ -153,3 +153,18 @@
     cursor: inherit;
   }
 }
+.search-dropdown::-webkit-scrollbar {
+  background-color:#ffffff;
+  height:4px; 
+  width: 4px;
+}
+.search-dropdown::-webkit-scrollbar-track {
+  background-color:#ffffff;
+}
+.search-dropdown::-webkit-scrollbar-thumb {
+  background-color: $light-grey;
+  border-radius:4px
+}
+.search-dropdown::-webkit-scrollbar-thumb:hover {
+  background-color: $purple-glow;
+}
