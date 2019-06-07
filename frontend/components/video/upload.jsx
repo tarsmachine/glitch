@@ -100,7 +100,7 @@ class Settings extends React.Component {
               
               <input type="file" id="source" name="video[source]" accept="video/*, .mp4" onChange={this.handleInput("source")}/>
               <label htmlFor="source">Select Source Video</label>
-              {this.state.source ? <span>{this.state.source}</span> : <span className="subtext">Please choose a video file under 25MB</span>}
+              {this.state.source ? <span>{this.state.source}</span> : <span className="subtext">Please choose a video file under 40MB</span>}
               {this.props.errors.source ? <span className="errors">{`File: ${this.props.errors.source}`}</span> : ""}
             </div>
           </div>
