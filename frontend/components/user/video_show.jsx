@@ -20,7 +20,7 @@ class VideoShow extends React.Component{
     const userAvatar = this.props.user ? this.props.user.avatar : "";
     const owner = (this.props.user && this.props.currentUser) ? this.props.user === this.props.currentUser : false;
     const date = this.props.video ? new Date(this.props.video.createdAt): "";
-    const time = date ? `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`: "";
+    const time = date ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`: "";
     const description = this.props.video ? this.props.video.description : "";
     return (
       <div className="user-video-show">
