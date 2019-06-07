@@ -39,7 +39,7 @@ class Api::SearchController < ApplicationController
   def top_videos
     offset = params[:offset] ? params[:offset].to_i || 0 : 0
     limit = params[:limit] ? params[:limit].to_i || 5 : 5
-    @videos = Video.with_attached_source.with_attached_thumbnail.all.limit(limit).offset(offset).order(created_at: :asc)
+    @videos = Video.with_attached_source.with_attached_thumbnail.all.limit(limit).offset(offset).order(updated_at: :desc)
     if(params[:username])
       @videos = @videos.includes(:user).where(users: {username: params[:username]})
     end
