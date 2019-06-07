@@ -21,6 +21,7 @@ class VideoShow extends React.Component{
     const owner = (this.props.user && this.props.currentUser) ? this.props.user === this.props.currentUser : false;
     const date = this.props.video ? new Date(this.props.video.createdAt): "";
     const time = date ? `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`: "";
+    const description = this.props.video ? this.props.video.description : "";
     return (
       <div className="user-video-show">
         <div className="top-bar">
@@ -42,6 +43,11 @@ class VideoShow extends React.Component{
           <span className="title">{title}</span>
           <span className="date">{time}</span>
         </div>
+        {description.length > 0 ? 
+        <div className="video-description">
+          <h2>Description:</h2>
+          <p>{description}</p>
+        </div> : ""}
       </div>
     );
   }

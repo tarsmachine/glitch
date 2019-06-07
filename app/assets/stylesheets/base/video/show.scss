@@ -140,4 +140,21 @@
       padding: 10px;
     }
   }
+  .video-description{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: $sans-serif;
+    h2{
+      font-size: 16px;
+      font-weight: bold;
+      padding: 0;
+      margin: 0;
+    }
+    p{
+      padding:10px;
+      text-indent: 15px;
+    }
+  }
 }
