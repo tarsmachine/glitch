@@ -29,7 +29,7 @@
     "npm": "6.9.0"
   },
   "scripts": {
-    "start": "webpack --watch --mode=development",
+    "start": "rails s & webpack --watch --mode=development",
     "postinstall": "webpack",
     "webpack": "webpack --watch --mode=development"
   },

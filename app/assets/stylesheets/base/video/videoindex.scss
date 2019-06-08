@@ -12,7 +12,7 @@
     margin: 0px;
     font-weight: 600;
   }
-  video-index.hidden{
+  .video-index.hidden{
     display: none;
   }
   .video-index{
@@ -55,6 +55,8 @@
         color: $muted-purple;
         font-size: 15px;
         padding: 5px 10px;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
       }
       .video-index-description{
         display: none;
@@ -63,6 +65,8 @@
         bottom: 0px;
         left: 0px;
         right: 0px;
+        overflow-y: hidden;
+        word-break: break-word; 
       }
     }
     .video-index-item:hover{

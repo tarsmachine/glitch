@@ -17,7 +17,7 @@ class Index extends React.Component{
     return(
       <>
       <h2>Latest Videos</h2>
-      <ul className="video-index-list latest-videos">
+      <ul className="video-index latest-videos">
         {this.props.latestVideos.length == 0 ? <li className="no-videos">No Videos</li> : ""}
         {this.props.latestVideos.map(video=><li key={video.id}><VideoIndexItem video={video} /></li>)}
       </ul>
@@ -28,7 +28,7 @@ class Index extends React.Component{
     return(
        <>
       <h2>Top Videos</h2>
-      <ul className="video-index-list top-videos">
+      <ul className="video-index top-videos">
           {this.props.topVideos.length == 0 ? <li className="no-videos">No Videos</li> : ""}
         {this.props.topVideos.map(video=><li key={video.id}><VideoIndexItem video={video} /></li>)}
       </ul>
