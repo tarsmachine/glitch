@@ -18,6 +18,8 @@
     display: flex;
     flex-basis:content;
     flex-wrap: wrap;
+    flex-shrink: 0;
+    height: auto;
     list-style: none;
     padding: 0px 20px;
     box-sizing:border-box;
