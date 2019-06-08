@@ -1,6 +1,7 @@
 .searchbar{
   font-size: 12px;
   display: flex;
+  flex-shrink: 0;
   position: relative;
   align-items: center;
   label{
@@ -24,6 +25,8 @@
     border-bottom: 1px solid $purple-glow;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
     height: 30px;
     width: 350px;
     order: 1;
