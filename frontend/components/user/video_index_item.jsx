@@ -8,6 +8,11 @@ export default props=>{
     <img src={props.video.thumbnail}/>
     <span className="video-index-title">{title}</span>
     <span className="video-index-username">{props.video.username}</span>
-    <span className="video-index-description">{props.video.description ? props.video.description : props.video.title}</span>
+    <span className="video-index-description">
+      <span className="description-title">{props.video.title}</span>
+      {props.video.description ?
+        <span className="description-description">{props.video.description}</span>
+      : ""}
+    </span>
   </Link>
 )};

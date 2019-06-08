@@ -75,13 +75,37 @@
         right: 0px;
         overflow-y: hidden;
         word-break: break-word; 
+        overflow: hidden;
+          .description-title{
+            color: $white;
+            width: auto;
+            display:flex;
+            height: auto;
+            flex-shrink: 0;
+            justify-content: center;
+            font-size: 18px;
+            word-break: break-word;
+            overflow: hidden;
+          }
+          .description-description{
+            color: $white;
+            display:flex;
+            width: auto;
+            height: auto;
+            flex-shrink: 1;
+            justify-content: center;
+            word-break: break-word;
+            text-align: center;
+            overflow: hidden;
+          }
       }
     }
     .video-index-item:hover{
       .video-index-description{
         display: flex;
-        justify-content: center;
-        align-items: flex-start;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
         border-radius: 3px;
         background-color: $black;
         color: $white;
