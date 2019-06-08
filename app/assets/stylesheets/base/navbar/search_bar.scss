@@ -60,6 +60,7 @@
               0 10px 22px -8px rgba(0,0,0,.02),
               0 8px 38px 0 rgba(0,0,0,.04);
   display: flex;
+  flex-basis: auto;
   font-size: 14px;
   flex-direction: column;
   min-height: 40vh;
@@ -85,6 +86,7 @@
   }
   .list-title{
     flex-grow: 0;
+    flex-basis: auto;
     background-color: $grey;
     color: $purple;
     text-transform: uppercase;

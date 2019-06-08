@@ -6,6 +6,7 @@
 .navbar{
   font-family: $sans-serif;
   display: flex;
+  flex-basis: auto;
   background-color: $purple;
   color: $white;
   align-items: center;
@@ -14,6 +15,7 @@
   box-sizing:border-box;
   a, a:visited{
     display: flex;
+    flex-basis: auto;
     height: 50px;
     text-decoration: none;
     align-items: center;
