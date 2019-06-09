@@ -15,6 +15,8 @@
     border-bottom-left-radius: 3px;
     padding: 6px 8px;
     font-size: 16px;
+    height: 32px;
+    box-sizing:border-box;
     color: $dark-grey;
   }
   .search-input{
@@ -27,9 +29,9 @@
     border-bottom-right-radius: 3px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    height: 30px;
+    height: 32px;
+    box-sizing:border-box;
     width: 350px;
-    flex-shrink: 0;
     order: 1;
   }
   .search-input::placeholder{
