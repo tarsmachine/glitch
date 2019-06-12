@@ -1,6 +1,6 @@
 # GlitchTV
 
-[Glitch](https://glitchtv.herokuapp.com) is a site meant to allow users to share video of gameplay with their fans. Content is currently provided by uploading VoDs (Video on Demand), which users may then watch. Users can keep track of favorite channels by following, and search the site for content. This project was built in 10 days.
+[Glitch](https://glitchtv.herokuapp.com) is a site meant to allow users to share video of gameplay with their fans. Content is currently provided by uploading VoDs (Video on Demand), which users may then watch. Users can keep track of favorite channels by following, and search the site for content.
 
 ## Technologies Leveraged
 
@@ -34,6 +34,52 @@
     - Prevents submission of input until all fields are filled in
     - Login/Signup modals so users can authenticate from anywhere without leaving the current page, and enables additional app functionality on signup via mapping to redux state
 
+## Code
+
+The standard practice to conditionally render content `{condition && content}` or `{ condition ? content : alternateContent }` begins to become unreadable quickly in complicated components - sometimes a smell that a component could be extracted, but even for smaller things, ugly and difficult to maintain.
+
+My solution, the elegant `<If />` component.
+
+```JS
+export default (props) => (
+    (props.true || props.When) ?
+        (typeof props.Then === "function" ? props.Then() : props.Then || "") :
+        (typeof props.Else === "function" ? props.Else() : props.Else || "")
+);
+```
+
+`If` takes in three props: 
+   1. A boolean `When` value (the word `When` is optional but recommended)
+   2. `Then` - optional content to render if `When` is true, or a callback function to execute and render; defaults to `""`.
+   3. `Else` - optional content to render if `When` is false, or a callback function to execute and render; defaults to `""`.
+
+This let me rewrite my code to look more akin to the standard `if (condition) {...} else {...}`
+
+```JS
+latestVideos(){
+    return(
+      <>
+        <h2>Latest Videos</h2>
+        <ul className="video-index latest-videos">
+          <If 
+            When={this.props.latestVideos.length === 0} 
+            Then={<li className="no-videos">No Videos</li>}
+            Else={this.props.latestVideos.map(video=><li key={video.id}><VideoIndexItem video={video} /></li>)}
+          />
+        </ul>
+      </>
+    )
+  }
+```
+
+or, omitting the optional `When`, this can become
+
+```JS
+<If {this.props.latestVideos.length === 0} 
+  Then={<li className="no-videos">No Videos</li>}
+  Else={this.props.latestVideos.map(video=><li key={video.id}><VideoIndexItem video={video} /></li>)}
+/>
+```
 
 ## Possible Future Plans
 
