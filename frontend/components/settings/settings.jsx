@@ -1,5 +1,6 @@
 import React from "react";
 import merge from "lodash/merge";
+import If from "../../util/if";
 
 class Settings extends React.Component{
   constructor(props){
@@ -53,7 +54,7 @@ class Settings extends React.Component{
               <div className="selector">
                 <input type="file" onChange={this.avatarSubmit} id="avatar" name="user[avatar]" accept=".png, .jpeg, .jpg, .gif, .svg" />
                 <label htmlFor="avatar">Select an Image</label>
-                {this.props.errors.avatar ? <span className="errors">{`File: ${this.props.errors.avatar}`}</span> : ""}
+                <If When={this.props.errors.avatar} Then={<span className="errors">{`File: ${this.props.errors.avatar}`}</span>}/>
                 <span className="subtext">Please choose an image file under 500kb (.png, .jpg, .gif, .svg)</span>
                 <span className="subtext">(Updates Immediately)</span>
               </div>

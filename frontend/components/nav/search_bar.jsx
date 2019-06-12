@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchDropdownContainer from "./search_dropdown_container";
+import If from "../../util/if";
 
 Function.prototype.throttle = function (interval) {
   let tooSoon = false;
@@ -78,12 +79,29 @@ class SearchBar extends React.Component{
         <label htmlFor="search-input">
           <i className="fas fa-search" />
         </label>
-        {this.state.search ? <i className="close-search fas fa-times" onClick={(e)=>{
-          e.preventDefault();
-          this.setState({category: false},
-          this.setState({search: ""}));
-        }} /> : ""}
-        {(this.state.showing && this.state.search) ? <SearchDropdownContainer showSearch={this.showSearch}search={this.state.search} category={this.state.category} offset={this.state.offset} setOffset={this.setOffset} setCategory={this.setCategory}/> : ""}
+        <If 
+          When={this.state.search}
+          Then={
+            <i className="close-search fas fa-times" 
+              onClick={
+                (e)=>{
+                  e.preventDefault();
+                  this.setState({category: false},
+                  this.setState({search: ""}));
+                }
+              } 
+            />
+          }
+        />
+        <If
+          When={this.state.showing && this.state.search}
+          Then={()=>
+            <SearchDropdownContainer 
+              showSearch={this.showSearch} search={this.state.search} category={this.state.category} 
+              offset={this.state.offset} setOffset={this.setOffset} setCategory={this.setCategory}
+            />
+          }
+        />
       </form>
     );
   }

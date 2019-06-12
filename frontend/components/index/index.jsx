@@ -1,6 +1,6 @@
 import React from "react";
 import VideoIndexItem from "./video_index_item";
-
+import If from "../../util/if";
 class Index extends React.Component{
   constructor(props){
     super(props);
@@ -18,8 +18,11 @@ class Index extends React.Component{
       <>
       <h2>Latest Videos</h2>
       <ul className="video-index latest-videos">
-        {this.props.latestVideos.length == 0 ? <li className="no-videos">No Videos</li> : ""}
-        {this.props.latestVideos.map(video=><li key={video.id}><VideoIndexItem video={video} /></li>)}
+        <If 
+          When={this.props.latestVideos.length === 0} 
+          Then={<li className="no-videos">No Videos</li>}
+          Else={this.props.latestVideos.map(video=><li key={video.id}><VideoIndexItem video={video} /></li>)}
+        />
       </ul>
       </>
     )
@@ -29,8 +32,11 @@ class Index extends React.Component{
        <>
       <h2>Top Videos</h2>
       <ul className="video-index top-videos">
-          {this.props.topVideos.length == 0 ? <li className="no-videos">No Videos</li> : ""}
-        {this.props.topVideos.map(video=><li key={video.id}><VideoIndexItem video={video} /></li>)}
+        <If 
+          When={this.props.topVideos.length == 0}
+          Then={<li className="no-videos">No Videos</li>}
+          Else={this.props.topVideos.map(video=><li key={video.id}><VideoIndexItem video={video} /></li>)}
+        />
       </ul>
       </>
     )

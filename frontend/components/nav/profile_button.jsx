@@ -1,5 +1,7 @@
 import React from 'react';
 import ProfileDropdown from "./profile_dropdown";
+import If from "../../util/if";
+
 class ProfileButton extends React.Component{
   constructor(props){
     super(props);
@@ -18,26 +20,36 @@ class ProfileButton extends React.Component{
     return (
       <>
         <button className={`profile-btn ${this.props.loggedIn ? "img-glitch" : "i-glitch"}`} onClick={this.toggleDropdown}>
-        {this.props.loggedIn ? 
-          <>
-            <img src={this.props.currentUser.avatar}/>
-            <img src={this.props.currentUser.avatar}/>
-            <img src={this.props.currentUser.avatar}/>
-          </>
-        : <>
-            <i className="fas fa-user"/>
-            <i className="fas fa-user"/>
-            <i className="fas fa-user"/>
-          </>
-        }
+          <If 
+            When={this.props.loggedIn} 
+            Then={()=>
+              <>
+                <img src={this.props.currentUser.avatar}/>
+                <img src={this.props.currentUser.avatar}/>
+                <img src={this.props.currentUser.avatar}/>
+              </>
+            }
+            Else={
+              <>
+                <i className="fas fa-user"/>
+                <i className="fas fa-user"/>
+                <i className="fas fa-user"/>
+              </>
+            }
+          />
         </button>
-        {this.state.showDropdown ? <ProfileDropdown
-          hideDropdown={this.hideDropdown} 
-          loggedIn={this.props.loggedIn}
-          showModal={(type)=>()=>this.hideDropdown(this.props.showModal(type))}
-          currentUser={this.props.currentUser}
-          logout={()=>{this.hideDropdown(this.props.logout);}}
-          /> : ""}
+        <If 
+          When={this.state.showDropdown}
+          Then={()=>
+            <ProfileDropdown
+              hideDropdown={this.hideDropdown} 
+              loggedIn={this.props.loggedIn}
+              showModal={(type)=>()=>this.hideDropdown(this.props.showModal(type))}
+              currentUser={this.props.currentUser}
+              logout={()=>{this.hideDropdown(this.props.logout);}}
+            />
+          }
+        />
       </>
     );
   } 

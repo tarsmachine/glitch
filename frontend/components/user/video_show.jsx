@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import FollowButtonContainer from "./follow_button_container";
+import If from "../../util/if";
 
 class VideoShow extends React.Component{
   constructor(props){
@@ -35,19 +36,29 @@ class VideoShow extends React.Component{
         </div>
         <video controls autoPlay playsInline muted src={videoSrc} id="video-player" className="video-player"/>
         <div className="bottom-bar">
-          {this.props.currentUser ? <FollowButtonContainer currentUser={this.props.currentUser} username={username} />
-           : <span>Sign in to follow {username}</span>}
-           { owner && this.props.video ? <Link to={`/${username}/videos/${this.props.video.id}/edit`}>Edit Video</Link> : "" }
+          <If 
+            When={this.props.currentUser} 
+            Then={()=><FollowButtonContainer currentUser={this.props.currentUser} username={username} />}
+            Else={<span>Sign in to follow {username}</span>}
+          />
+          <If
+            When={owner && this.props.video}
+            Then={<Link to={`/${username}/videos/${this.props.video.id}/edit`}>Edit Video</Link>}
+          />
         </div>
         <div className="video-info">
           <span className="title">{title}</span>
           <span className="date">{time}</span>
         </div>
-        {description.length > 0 ? 
-        <div className="video-description">
-          <h2>Description:</h2>
-          <p>{description}</p>
-        </div> : ""}
+        <If
+          When={description.length > 0} 
+          Then={
+            <div className="video-description">
+              <h2>Description:</h2>
+              <p>{description}</p>
+            </div>
+          }
+        />
       </div>
     );
   }

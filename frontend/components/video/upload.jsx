@@ -1,5 +1,6 @@
 import React from "react";
 import ReactModal from "react-modal";
+import If from "../../util/if";
 
 class Settings extends React.Component {
   constructor(props) {
@@ -90,18 +91,25 @@ class Settings extends React.Component {
           </div>
           <div>
             <div className="selector">
-              
               <input type="file" id="thumbnail" name="video[thumbnail]" onChange={this.handleInput("thumbnail")} accept=".png, .jpeg, .jpg, .gif, .svg" />
               <label htmlFor="thumbnail">Select Thumbnail Image</label>
-              {this.state.thumbnail ? <span>{this.state.thumbnail}</span> : <span className="subtext">Please choose an image file under 500kb (.png, .jpg, .gif, .svg)</span>}
-              {this.props.errors.thumbnail ? <span className="errors">{`File: ${this.props.errors.thumbnail}`}</span> : ""}
+              <If 
+                When={this.state.thumbnail}
+                Then={<span>{this.state.thumbnail}</span>}
+                Else={<span className="subtext">Please choose an image file under 500kb (.png, .jpg, .gif, .svg)</span>}
+              />
+              <If When={this.props.errors.thumbnail} Then={<span className="errors">{`File: ${this.props.errors.thumbnail}`}</span>}/>
             </div>
             <div className="selector">
               
               <input type="file" id="source" name="video[source]" accept="video/*, .mp4" onChange={this.handleInput("source")}/>
               <label htmlFor="source">Select Source Video</label>
-              {this.state.source ? <span>{this.state.source}</span> : <span className="subtext">Please choose a video file under 40MB</span>}
-              {this.props.errors.source ? <span className="errors">{`File: ${this.props.errors.source}`}</span> : ""}
+              <If
+                When={this.state.source} 
+                Then={<span>{this.state.source}</span>}
+                Else={<span className="subtext">Please choose a video file under 40MB</span>}
+              />
+              <If When={this.props.errors.source} Then={<span className="errors">{`File: ${this.props.errors.source}`}</span>}/>
             </div>
           </div>
             

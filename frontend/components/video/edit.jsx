@@ -1,6 +1,7 @@
 import React from "react";
 import ReactModal from "react-modal";
 import {Redirect} from "react-router-dom";
+import If from "../../util/if";
 
 class Edit extends React.Component {
   constructor(props) {
@@ -115,12 +116,15 @@ class Edit extends React.Component {
             <textarea id="description" value={this.state.description} onChange={this.handleInput("description")} />
           </div>
           <div>
-            <div className="selector">
-              
+            <div className="selector">      
               <input type="file" id="thumbnail" name="video[thumbnail]" onChange={this.handleInput("thumbnail")} accept=".png, .jpeg, .jpg, .gif, .svg" />
               <label htmlFor="thumbnail">Select Thumbnail Image</label>
-              {this.state.thumbnail ? <span>{this.state.thumbnail}</span> : <span className="subtext">Please choose an image file under 500kb (.png, .jpg, .gif, .svg)</span>}
-              {this.props.errors.thumbnail ? <span className="errors">{`File: ${this.props.errors.thumbnail}`}</span> : ""}
+              <If 
+                When={this.state.thumbnail} 
+                Then={<span>{this.state.thumbnail}</span>}
+                Else={ <span className="subtext">Please choose an image file under 500kb (.png, .jpg, .gif, .svg)</span>}
+              />
+              <If When={this.props.errors.thumbnail} Then={<span className="errors">{`File: ${this.props.errors.thumbnail}`}</span>}/>
             </div>
           </div>
           <div className="button-group">

@@ -1,4 +1,5 @@
 import React from "react";
+import If from "../../util/if";
 
 class SearchDropdown extends React.Component{
   constructor(props){
@@ -89,15 +90,22 @@ class SearchDropdown extends React.Component{
   noResults(){
     let noResults=true;
     Object.values(this.props.results.count).forEach(count=>{if(count > 0) noResults=false});
-    return noResults? <ul className={this.props.loading? "hidden" : ""}>
-      <li className="no-results">
-        No Results
-      </li>
-    </ul>  : "";
+    return (
+      <If
+        When={noResults} 
+        Then={()=>
+          <ul className={this.props.loading ? "hidden" : ""}>
+            <li className="no-results">
+              No Results
+            </li>
+          </ul>
+        }
+      />
+    );
   }
   loading(){
     return (
-      <ul className={this.props.loading? "" : "hidden"}>
+      <ul className={this.props.loading ? "" : "hidden"}>
         <li className="no-results">
           Loading...
         </li>
@@ -108,8 +116,8 @@ class SearchDropdown extends React.Component{
     return (
         <div className="search-dropdown">
         <span className="search-title">{this.title()}</span>
-        {this.props.results.users ? this.userIndex() : ""}
-        {this.props.results.videos ? this.videoIndex() : ""}
+        <If When={this.props.results.users} Then={()=>this.userIndex()}/>
+        <If When={this.props.results.videos} Then={()=>this.videoIndex()}/>
         {this.loading()}
         {this.noResults()}
       </div>
