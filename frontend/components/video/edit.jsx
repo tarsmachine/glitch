@@ -122,7 +122,7 @@ class Edit extends React.Component {
               <If 
                 When={this.state.thumbnail} 
                 Then={<span>{this.state.thumbnail}</span>}
-                Else={ <span className="subtext">Please choose an image file under 500kb (.png, .jpg, .gif, .svg)</span>}
+                Else={<span className="subtext">Please choose an image file under 500kb (.png, .jpg, .gif, .svg)</span>}
               />
               <If When={this.props.errors.thumbnail} Then={<span className="errors">{`File: ${this.props.errors.thumbnail}`}</span>}/>
             </div>
