@@ -43,7 +43,7 @@ class VideoShow extends React.Component{
           />
           <If
             When={owner && this.props.video}
-            Then={<Link to={`/${username}/videos/${this.props.video.id}/edit`}>Edit Video</Link>}
+            Then={()=><Link to={`/${username}/videos/${this.props.video.id}/edit`}>Edit Video</Link>}
           />
         </div>
         <div className="video-info">
