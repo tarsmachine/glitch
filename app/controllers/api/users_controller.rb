@@ -19,7 +19,6 @@ class Api::UsersController < ApplicationController
     end
   end
   def update
-    p params
     @user = User.with_attached_avatar.find_by(username: params[:id])
     if(@user != current_user)
       render json: {user: "You cannot edit other users!"}, status: 422
